@@ -17,9 +17,7 @@ using System.Collections.ObjectModel;
 
 namespace ApartmanManager
 {
-    /// <summary>
-    /// Interaction logic for RoomWindow.xaml
-    /// </summary>
+
     public partial class RoomWindow : Window
     {
         public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
