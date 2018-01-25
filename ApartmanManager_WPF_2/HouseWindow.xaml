@@ -1,0 +1,96 @@
+﻿<Window x:Class="ApartmanManager.HouseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApartmanManager"
+        xmlns:src="clr-namespace:ApartmanManagerLib;assembly=ApartmanManagerLib"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="Házak" MinHeight="420" MinWidth="400" Height="420" Width="600" Icon="Icons/house_4.png">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="338*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel  Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,3,3" Grid.Column="1">
+            
+            <Button x:Name="BtnCancel" IsEnabled="True" Width="100" Click="BtnCancel_Click">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="Icons/cancel_1.png"  />
+                    <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Bezárás"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+
+        <TabControl Grid.Row="0" Grid.Column="0" TabStripPlacement="Top" Margin="3,3,3,3" >
+            <TabItem Header="Házak" HorizontalAlignment="Left" Height="25" Margin="0" VerticalAlignment="Top" Width="65" >
+                <Grid Background="#FFE0E0E0" Margin="0,0,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="89*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Orientation="Horizontal">
+                        <Image Source="Icons/house_3.png" Margin="15,0,0,0"  />
+                        <TextBlock Margin="10,0,0,0" FontSize="18">Meglévő házak</TextBlock>
+                        <Button x:Name="BtnDelete" IsEnabled="True" Margin="270,0,0,0" Click="BtnDelete_Click">
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="Icons/delete_1.png"  />
+                                <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Ház törlés"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <ListView Name="HouseListView" Margin="10,10,10,5" Grid.Row="1">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding HouseID}"/>
+                                <GridViewColumn Header="Ház név" Width="150" DisplayMemberBinding="{Binding HouseName}"/>
+                                <GridViewColumn Header="Szobák" Width="60" DisplayMemberBinding="{Binding NumberOfRooms}"/>
+                                <GridViewColumn Header="Megjegyzés" Width="280" DisplayMemberBinding="{Binding Note}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Új ház" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="65">
+                <Grid Background="#FFE0E0E0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="265*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="3,3,0,0" Grid.Column="1">
+
+                        <Button Name="BtnAdd" IsEnabled="True" Width="100" Click="BtnAdd_Click">
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="Icons/plus.png"  />
+                                <TextBlock Margin="3,0,0,0" FontSize="16">Hozzáad</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel  Orientation="Horizontal">
+                        <Image Source="Icons/house_5.png" Margin="15,0,0,0"  />
+                        <TextBlock Margin="10,0,0,0" FontSize="18">Ház hozzáadása</TextBlock>
+                    </StackPanel>
+                    <TextBox Name="HouseNameField" HorizontalAlignment="Left" Height="30" Margin="160,30,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ház név" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,30,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ház neve:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Szobák száma:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBox Name="NoteField" HorizontalAlignment="Left" Height="100" Margin="160,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés (pl. cím stb.)" VerticalAlignment="Top" Width="250" FontSize="14"/>
+                    <TextBox x:Name="RoomNumberField" HorizontalAlignment="Left" Height="30" Margin="160,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Szobák száma" VerticalAlignment="Top" Width="181" FontSize="18"/>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmanManager", "ApartmanManager_WPF_2\ApartmanManager.csproj", "{0E04CF98-A888-4488-BD22-797B7F0759AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41} = {26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmanManagerLib", "ApartmanManagerLib\ApartmanManagerLib.csproj", "{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E04CF98-A888-4488-BD22-797B7F0759AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E04CF98-A888-4488-BD22-797B7F0759AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E04CF98-A888-4488-BD22-797B7F0759AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E04CF98-A888-4488-BD22-797B7F0759AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26AF8E60-BBF0-46E4-A1C9-32F012B2AE41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {310CC6E9-5450-4229-B167-EDB23125CE3A}
+	EndGlobalSection
+EndGlobal
