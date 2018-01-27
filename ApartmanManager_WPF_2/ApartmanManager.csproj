@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GuestWindow.xaml.cs">
+      <DependentUpon>GuestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HouseWindow.xaml.cs">
       <DependentUpon>HouseWindow.xaml</DependentUpon>
     </Compile>
@@ -63,6 +66,10 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="GuestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HouseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +182,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\guest_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\guest_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\guest_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

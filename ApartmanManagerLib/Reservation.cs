@@ -9,13 +9,13 @@ namespace ApartmanManagerLib
 {
     public class Reservation
     {
+        private uint reservationID;
         private uint guestID;
         private uint roomID;
-        private uint reservationID;
 
         private byte numberOfPersons;
         private byte numberOfInfants;
-        
+
         private CustomTypes.enPayMethod payMethod;
         private CustomTypes.enSzepType szepType;
 
@@ -27,7 +27,10 @@ namespace ApartmanManagerLib
         private DateTime arrival;
         private DateTime leave;
 
-        public string note;
+        private string note;
+
+
+        public uint ReservationId{get{ return this.reservationID; } set{ this.reservationID = value; } }
 
     }
 }

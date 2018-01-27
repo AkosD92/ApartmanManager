@@ -18,6 +18,26 @@ namespace ApartmanManagerLib
             System.IO.File.WriteAllText(houseDbPath, String.Empty);
             System.IO.File.WriteAllText(roomDbPath, String.Empty);
 
+            WriteHouses();
+            WriteRooms();
+
+            return CustomTypes.SUCCESS;         
+        }
+
+
+        public int StartUpRecover()
+        {
+            ReadHouses();
+            ReadRooms();
+
+            return CustomTypes.SUCCESS;
+        }
+
+
+
+        /*Implementation of the method responsible for writing house objects to a file*/
+        private void WriteHouses()
+        {
             foreach (House h in InstanceManager.houseCollection)
             {
                 try
@@ -26,13 +46,22 @@ namespace ApartmanManagerLib
                     {
                         file.WriteLine(h.ToString());
                     }
+                    
                 }
                 catch (System.IO.IOException)
                 {
-                    return CustomTypes.FAILURE;
+                    
                 }
+                
             }
 
+        }
+        /*End of implementation: WriteHouse*/
+
+
+        /*Implementation of the method responsible for writing room objects to a file*/
+        private void WriteRooms()
+        {
             foreach (Room r in InstanceManager.roomCollection)
             {
                 try
@@ -44,15 +73,13 @@ namespace ApartmanManagerLib
                 }
                 catch (System.IO.IOException)
                 {
-                    return CustomTypes.FAILURE;
+
                 }
             }
-
-            return CustomTypes.SUCCESS;
         }
+        /*End of implementation: WriteRooms*/
 
-
-        public int StartUpRecover()
+        private void ReadHouses()
         {
             string line;
             string[] fields;
@@ -74,8 +101,16 @@ namespace ApartmanManagerLib
             }
             catch (System.IO.IOException)
             {
-                return CustomTypes.FAILURE;
+                
             }
+        }
+
+        private void ReadRooms()
+        {
+            string line;
+            string[] fields;
+            int instanceCount = 0;
+
 
             try
             {
@@ -93,10 +128,10 @@ namespace ApartmanManagerLib
             }
             catch (System.IO.IOException)
             {
-                return CustomTypes.FAILURE;
+                
             }
-
-            return CustomTypes.SUCCESS;
         }
+
     }
+
 }

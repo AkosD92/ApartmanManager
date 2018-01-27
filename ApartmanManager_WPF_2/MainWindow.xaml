@@ -33,7 +33,7 @@
             </Button>
             <Button Name="BtnGuests" IsEnabled="False" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Icons/guest_1.png"  />
+                    <Image Source="Icons/guest_2.png"  />
                     <TextBlock Margin="3,0,0,0">Vendégek</TextBlock>
                 </StackPanel>
             </Button>
