@@ -45,6 +45,7 @@ namespace ApartmanManager
                 BtnReserve.IsEnabled = true;
                 BtnSettings.IsEnabled = true;
                 BtnRooms.IsEnabled = true;
+                BtnGuests.IsEnabled = true;
 
 
                 AppStateTxt.Text = "LoggedIn";

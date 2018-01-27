@@ -31,6 +31,12 @@
                     <TextBlock Margin="3,0,0,0">Foglalás</TextBlock>
                 </StackPanel>
             </Button>
+            <Button Name="BtnGuests" IsEnabled="False" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Icons/guest_1.png"  />
+                    <TextBlock Margin="3,0,0,0">Vendégek</TextBlock>
+                </StackPanel>
+            </Button>
             <Button Name="BtnHouses" IsEnabled="False" Click="BtnHouses_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Icons/house_4.png"  />
