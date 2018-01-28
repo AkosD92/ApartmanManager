@@ -9,3 +9,5 @@
 9|0|1|-|0|Beállításra vár
 10|0|1|-|0|Beállításra vár
 11|0|1|-|0|Beállításra vár
+12|0|2|Egyes szoba|2|+1 pótágy
+13|0|2|Kettes szoba|3|nincs pótágy

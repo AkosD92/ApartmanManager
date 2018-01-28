@@ -10,11 +10,14 @@ namespace ApartmanManagerLib
     public static class InstanceManager
     {
    
-
+        /*Static collections containing objects*/
         public static ObservableCollection<House> houseCollection = new ObservableCollection<House>();
         public static ObservableCollection<Room> roomCollection = new ObservableCollection<Room>();
+        public static ObservableCollection<Guest> guestCollection = new ObservableCollection<Guest>();
 
 
+
+        /*---------------------------[Object creation methods]-------------------------------*/
         public static bool CreateHouse(string houseName, byte NrRooms, string note)
         {
             int calculatedHouseId = InstanceManager.houseCollection.Count + 1;
@@ -54,6 +57,27 @@ namespace ApartmanManagerLib
             return true;
         }
 
+
+        public static void CreateGuest(string familyName, string firstName, string tel, string mail, string address, string note)
+        {
+            int calculatedGuestId = 1;
+            if (InstanceManager.guestCollection.Count != 0)
+            {
+                foreach (Guest g in InstanceManager.guestCollection)
+                {
+                    if (g.GuestId >= calculatedGuestId)
+                    {
+                        calculatedGuestId = g.GuestId + 1;
+                    }
+                }
+            }
+
+            InstanceManager.guestCollection.Add(new Guest(calculatedGuestId, null, familyName, firstName, tel, mail, address, note));
+        }
+        /*---------------------------[***************************]-------------------------------*/
+
+
+        /*---------------------------[Object loader methods]-------------------------------*/
         public static void LoadHouse(string loadedId, string loadedName, string loadedNumRooms, string loadedNote)
         {
             houseCollection.Add(new House(int.Parse(loadedId), loadedName, byte.Parse(loadedNumRooms), loadedNote));
@@ -76,8 +100,11 @@ namespace ApartmanManagerLib
             roomCollection.Add(new Room(int.Parse(loadedRoomId), int.Parse(loadedReservationId), loadedRoomName, byte.Parse(loadedNumberOfBeds), loadedNote, houseToLoad));
 
         }
+        /*---------------------------[***************************]-------------------------------*/
 
 
+
+        /*---------------------------[Object removal methods]-------------------------------*/
         public static void RemoveHouse(House houseToRemove)
         {
             if (houseToRemove != null)
@@ -95,9 +122,9 @@ namespace ApartmanManagerLib
             }
 
         }
+        /*---------------------------[***************************]-------------------------------*/
 
-       
-        
+
 
     }
 }
