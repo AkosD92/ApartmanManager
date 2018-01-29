@@ -35,17 +35,18 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Orientation="Horizontal">
-                        <Image Source="Icons/guest_2.png" Margin="15,0,0,0"  />
+                        <Image Source="Icons/booking_1.png" Margin="15,0,0,0"  />
                         <TextBlock Margin="10,0,0,0" FontSize="18">Aktív vendégek</TextBlock>
                        
                     </StackPanel>
-                    <ListView Name="HouseListView" Margin="10,10,10,5" Grid.Row="1">
+                    <ListView Name="ActiveGuestListView" Margin="10,10,10,5" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding HouseID}"/>
-                                <GridViewColumn Header="Ház név" Width="150" DisplayMemberBinding="{Binding HouseName}"/>
-                                <GridViewColumn Header="Szobák" Width="60" DisplayMemberBinding="{Binding NumberOfRooms}"/>
-                                <GridViewColumn Header="Megjegyzés" Width="280" DisplayMemberBinding="{Binding Note}"/>
+                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding HouseName}"/>
+                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding NumberOfRooms}"/>
+                                <GridViewColumn Header="Ház" Width="150" DisplayMemberBinding="{Binding Note}"/>
+                                <GridViewColumn Header="Szoba" Width="100" DisplayMemberBinding="{Binding Note}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -64,7 +65,8 @@
                     <StackPanel  Orientation="Horizontal">
                         <Image Source="Icons/guest_3.png" Margin="15,0,0,0"  />
                         <TextBlock Margin="10,0,0,0" FontSize="18">Összes vendég</TextBlock>
-                        <Button x:Name="BtnDelete" IsEnabled="True" Margin="250,0,0,0" >
+                        <TextBox Margin="30,0,0,0" FontSize="16" Width="150" Name="GuestFilterBox"></TextBox>
+                        <Button x:Name="BtnDelete" IsEnabled="True" Margin="10,0,0,0" ToolTip="Csak inaktív vendég törölhető">
                             <StackPanel  Orientation="Horizontal">
                                 <Image Source="Icons/delete_1.png"  />
                                 <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Vendég törlés"/></TextBlock>
@@ -75,9 +77,10 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding HouseID}"/>
-                                <GridViewColumn Header="Ház név" Width="150" DisplayMemberBinding="{Binding HouseName}"/>
-                                <GridViewColumn Header="Szobák" Width="60" DisplayMemberBinding="{Binding NumberOfRooms}"/>
-                                <GridViewColumn Header="Megjegyzés" Width="280" DisplayMemberBinding="{Binding Note}"/>
+                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding HouseName}"/>
+                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding NumberOfRooms}"/>
+                                <GridViewColumn Header="Foglalás" Width="60" DisplayMemberBinding="{Binding Note}"/>
+                                <GridViewColumn Header="Megjegyzés" Width="200" DisplayMemberBinding="{Binding Note}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -111,6 +114,28 @@
                     <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="130" FontSize="18"/>
                     <TextBox Name="NoteField" HorizontalAlignment="Left" Height="100" Margin="160,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés (pl. cím stb.)" VerticalAlignment="Top" Width="250" FontSize="14"/>
                     <TextBox x:Name="RoomNumberField" HorizontalAlignment="Left" Height="30" Margin="160,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Szobák száma" VerticalAlignment="Top" Width="181" FontSize="18"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Paraméterek" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="80" IsEnabled="False">
+                <Grid Background="#FFE0E0E0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="265*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                   
+                    <StackPanel  Orientation="Horizontal">
+                        <Image Source="Icons/guest_2.png" Margin="15,0,0,0"  />
+                        <TextBlock Margin="10,0,0,0" FontSize="18">Részletes vendég információ</TextBlock>
+                    </StackPanel>
+                    <TextBox Name="GuestNameField" HorizontalAlignment="Left" Height="30" Margin="160,30,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ház név" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,30,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ház neve:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Szobák száma:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="130" FontSize="18"/>
+                    <TextBox Name="GuestNoteField" HorizontalAlignment="Left" Height="100" Margin="160,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Megjegyzés (pl. cím stb.)" VerticalAlignment="Top" Width="250" FontSize="14"/>
+                    
 
                 </Grid>
             </TabItem>

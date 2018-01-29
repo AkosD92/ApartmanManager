@@ -20,6 +20,11 @@ namespace ApartmanManager
 
     public partial class RoomWindow : Window
     {
+
+        string DefaultRoomName = "Szoba neve/száma";
+        string DefaultBedNumber = "Ágyak száma";
+        string DefaultNote = "Megjegyzés";
+
         public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
 
         public RoomWindow()
@@ -85,7 +90,7 @@ namespace ApartmanManager
 
           
             //check if each field was filled
-            if (RoomNameField.Text != "Szoba neve/száma")
+            if (RoomNameField.Text != DefaultRoomName)
             {
                 gotName = RoomNameField.Text;
             }
@@ -100,7 +105,7 @@ namespace ApartmanManager
                 check = false;
             }
 
-            if (NoteField.Text != "Megjegyzés")
+            if (NoteField.Text != DefaultNote)
             {
                 gotNote = NoteField.Text;
             }
@@ -120,9 +125,9 @@ namespace ApartmanManager
                         r.Note = gotNote;
                     }
                 }
-                RoomNameField.Text = "Szoba neve/száma";
-                BedsField.Text = "Ágyak száma";
-                NoteField.Text = "Megjegyzés";
+                RoomNameField.Text = DefaultRoomName;
+                BedsField.Text = DefaultBedNumber;
+                NoteField.Text = DefaultNote;
                 HouseSelector_SelectionChanged(null, null);
                 RoomTab.IsSelected = true;
             }

@@ -22,6 +22,11 @@ namespace ApartmanManager
     /// </summary>
     public partial class HouseWindow : Window
     {
+        string DefaultHouseName = "Ház név";
+        string DefaultRoomNumber = "Szobák száma";
+        string DefaultNote = "Megjegyzés (pl. cím stb.)";
+
+
         public HouseWindow()
         {
             InitializeComponent();
@@ -46,7 +51,7 @@ namespace ApartmanManager
             StringBuilder errString = new StringBuilder() ;
 
             //check if each field was filled
-            if (HouseNameField.Text != "Ház név")
+            if (HouseNameField.Text != DefaultHouseName)
             {
                 gotName = HouseNameField.Text;
             }
@@ -62,7 +67,7 @@ namespace ApartmanManager
                 check = false;
             }
 
-            if (NoteField.Text != "Megjegyzés (pl. cím stb.)")
+            if (NoteField.Text != DefaultNote)
             {
                 gotNote = NoteField.Text;
             }else
@@ -75,9 +80,9 @@ namespace ApartmanManager
                 if (InstanceManager.CreateHouse(gotName, gotRooms, gotNote))
                 {
                     MessageBox.Show("Ház hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
-                    HouseNameField.Text = "Ház név";
-                    RoomNumberField.Text= "Szobák száma";
-                    NoteField.Text = "Megjegyzés (pl. cím stb.)";
+                    HouseNameField.Text = DefaultHouseName;
+                    RoomNumberField.Text= DefaultRoomNumber;
+                    NoteField.Text = DefaultNote;
                 }
             }
             else
