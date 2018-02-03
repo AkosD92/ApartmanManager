@@ -1,5 +1,5 @@
-1|0|1|-|0|Beállításra vár
-2|0|1|-|0|Beállításra vár
+1|0|1|F1|2|Földszint, első szoba
+2|0|1|F2|1|ksjdkjskdjskjdksjdksjdksjdkjskdjskdjskjdksjdkjwkjksjdksjdkjskdj
 3|0|1|-|0|Beállításra vár
 4|0|1|-|0|Beállításra vár
 5|0|1|-|0|Beállításra vár

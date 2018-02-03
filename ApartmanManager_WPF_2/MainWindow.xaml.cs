@@ -80,5 +80,12 @@ namespace ApartmanManager
             RoomWin.Owner = this;
             RoomWin.ShowDialog();
         }
+
+        private void BtnGuests_Click(object sender, RoutedEventArgs e)
+        {
+            GuestWindow GuestWin = new GuestWindow();
+            GuestWin.Owner = this;
+            GuestWin.ShowDialog();
+        }
     }
 }
