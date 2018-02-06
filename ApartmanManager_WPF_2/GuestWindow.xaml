@@ -76,9 +76,9 @@
                     <ListView Name="GuestListView" Margin="10,10,10,5" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding HouseID}"/>
-                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding HouseName}"/>
-                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding NumberOfRooms}"/>
+                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding GuestId}"/>
+                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding FamilyName}"/>
+                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding FirstName}"/>
                                 <GridViewColumn Header="Megjegyzés" Width="200" DisplayMemberBinding="{Binding Note}"/>
                             </GridView>
                         </ListView.View>

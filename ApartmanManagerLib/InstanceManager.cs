@@ -18,7 +18,7 @@ namespace ApartmanManagerLib
 
 
         /*---------------------------[Object creation methods]-------------------------------*/
-        public static bool CreateHouse(string houseName, byte NrRooms, string note)
+        public static void CreateHouse(string houseName, byte NrRooms, string note)
         {
             int calculatedHouseId = InstanceManager.houseCollection.Count + 1;
 
@@ -50,11 +50,9 @@ namespace ApartmanManagerLib
                     }
                 }
 
-                roomCollection.Add(new Room(calculatedRoomId, 0,  "-", 0, "Beállításra vár", newHouse));
+                roomCollection.Add(new Room(calculatedRoomId, 0,  calculatedRoomId.ToString(), 0, "Beállításra vár", newHouse));
             }
-            
 
-            return true;
         }
 
 

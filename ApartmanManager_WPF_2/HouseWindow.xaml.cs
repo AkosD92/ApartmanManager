@@ -17,23 +17,27 @@ using ApartmanManagerLib;
 
 namespace ApartmanManager
 {
-    /// <summary>
-    /// Interaction logic for HouseWindow.xaml
-    /// </summary>
+
     public partial class HouseWindow : Window
     {
         string DefaultHouseName = "Ház név";
         string DefaultRoomNumber = "Szobák száma";
         string DefaultNote = "Megjegyzés (pl. cím stb.)";
 
+        public void ClearFields()
+        {
+            HouseNameField.Text = DefaultHouseName;
+            RoomNumberField.Text = DefaultRoomNumber;
+            NoteField.Text = DefaultNote;
+        }
 
         public HouseWindow()
         {
             InitializeComponent();
+            ClearFields();
             HouseListView.ItemsSource = InstanceManager.houseCollection;
         }
-
-        
+     
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -44,62 +48,41 @@ namespace ApartmanManager
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             //create locals
-            string gotName= null;
+            string gotName= null, gotNote = null;
             byte gotRooms = 0;
-            string gotNote = null;
+
             bool check = true;
             StringBuilder errString = new StringBuilder() ;
 
-            //check if each field was filled
-            if (HouseNameField.Text != DefaultHouseName)
-            {
-                gotName = HouseNameField.Text;
-            }
-            else
-            {
-                errString.AppendLine("- Ház neve"); ;
+            //get house name
+            if (HouseNameField.Text != DefaultHouseName) { gotName = HouseNameField.Text;}
+            else {
+                errString.AppendLine(DefaultHouseName); ;
                 check = false;
             }
-
+            //get number of rooms
             if (!Byte.TryParse(RoomNumberField.Text, out gotRooms))
             {
-                errString.AppendLine("- Szobaszám");
+                errString.AppendLine(DefaultRoomNumber);
                 check = false;
             }
+            //get note
+            if (NoteField.Text != DefaultNote){ gotNote = NoteField.Text; }
+            else { gotNote="-";}
 
-            if (NoteField.Text != DefaultNote)
-            {
-                gotNote = NoteField.Text;
-            }else
-            {
-                gotNote="-";
-            }
-
+            //if everything was ok, create the house and the rooms
             if (check == true)
             {
-                if (InstanceManager.CreateHouse(gotName, gotRooms, gotNote))
-                {
-                    MessageBox.Show("Ház hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
-                    HouseNameField.Text = DefaultHouseName;
-                    RoomNumberField.Text= DefaultRoomNumber;
-                    NoteField.Text = DefaultNote;
-                }
+                InstanceManager.CreateHouse(gotName, gotRooms, gotNote); 
+                MessageBox.Show("Ház hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
+                ClearFields();
             }
-            else
-            {
-                FieldError(errString);
-            }
-
-
-
+            //else show error window
+            else{ MessageBox.Show("Hiba a következő mezőkben:\n" + errString, "Érték hiba!", MessageBoxButton.OK, MessageBoxImage.Error); }
 
         }
 
-        private void FieldError(StringBuilder sb)
-        {
-            MessageBox.Show("Hiba a következő mezőkben:\n"+sb, "Érték hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
+ 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
 

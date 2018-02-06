@@ -27,9 +27,19 @@ namespace ApartmanManager
 
         public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
 
+        private void ClearFields()
+        {
+            RoomNameField.Text = DefaultRoomName;
+            BedsField.Text = DefaultBedNumber;
+            NoteField.Text = DefaultNote;
+            HouseSelector_SelectionChanged(null, null);
+            RoomTab.IsSelected = true;
+        }
+
         public RoomWindow()
         {
             InitializeComponent();
+            ClearFields();
             RoomListView.ItemsSource = filteredRooms;
             HouseSelector.ItemsSource = InstanceManager.houseCollection;
 
@@ -82,38 +92,26 @@ namespace ApartmanManager
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             //create locals
-            string gotName = null;
+            string gotName = null, gotNote = null;
             byte gotBeds = 0;
-            string gotNote = null;
             bool check = true;
             StringBuilder errString = new StringBuilder();
-
           
-            //check if each field was filled
-            if (RoomNameField.Text != DefaultRoomName)
-            {
-                gotName = RoomNameField.Text;
-            }
-            else
-            {
-                gotName = "-";
-            }
-
+            //get room name
+            if (RoomNameField.Text != DefaultRoomName) { gotName = RoomNameField.Text; }
+            //get number of beds
             if (!Byte.TryParse(BedsField.Text, out gotBeds))
             {
-                errString.AppendLine("- Ágyszám");
+                errString.AppendLine(DefaultBedNumber);
                 check = false;
             }
-
-            if (NoteField.Text != DefaultNote)
-            {
-                gotNote = NoteField.Text;
-            }
-            else
-            {
+            //get note
+            if (NoteField.Text != DefaultNote){gotNote = NoteField.Text; }
+            else{
                 gotNote = "-";
             }
 
+            //if everything was ok, set room data
             if (check == true)
             {
                 foreach (Room r in InstanceManager.roomCollection)
@@ -125,23 +123,16 @@ namespace ApartmanManager
                         r.Note = gotNote;
                     }
                 }
-                RoomNameField.Text = DefaultRoomName;
-                BedsField.Text = DefaultBedNumber;
-                NoteField.Text = DefaultNote;
-                HouseSelector_SelectionChanged(null, null);
-                RoomTab.IsSelected = true;
+                ClearFields();
             }
             else
             {
-                FieldError(errString);
+                MessageBox.Show("Hiba a következő mezőkben:\n" + errString, "Érték hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
         }
-        private void FieldError(StringBuilder sb)
-        {
-            MessageBox.Show("Hiba a következő mezőkben:\n" + sb, "Érték hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
+      
 
     }
 }
