@@ -14,6 +14,8 @@ namespace ApartmanManagerLib
 
         public enum enAppState {STARTUP, RUNNING, CLOSING, ERROR};
 
+        public enum enSubject {HOUSE, GUEST, ROOM, RESERVATION };
+
         public const int SUCCESS = 0;
         public const int FAILURE = -1;
         

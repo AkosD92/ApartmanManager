@@ -16,3 +16,4 @@
 16|0|3|-|0|Beállításra vár
 17|0|3|-|0|Beállításra vár
 18|0|3|-|0|Beállításra vár
+19|0|4|SZ1|1|-

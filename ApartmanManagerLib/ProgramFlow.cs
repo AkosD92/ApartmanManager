@@ -30,20 +30,8 @@ namespace ApartmanManagerLib
         public static void StartUp()
         {
 
-            int RecoverResult = StorageManager.StartUpRecover();
+            StorageManager.StartUpRecover();
 
-            if (RecoverResult == CustomTypes.SUCCESS)
-            {
-                appState = CustomTypes.enAppState.RUNNING;
-            }
-            else if (RecoverResult == CustomTypes.FAILURE)
-            {
-                appState = CustomTypes.enAppState.ERROR;
-            }
-            else
-            {
-                //uncertain event
-            }
 
             
            
@@ -52,7 +40,7 @@ namespace ApartmanManagerLib
 
         public static void ExitSave()
         {
-            int SaveResult = StorageManager.SaveOnExit();
+            StorageManager.SaveOnExit();
         }
 
 

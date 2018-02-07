@@ -10,8 +10,8 @@ namespace ApartmanManagerLib
     {
 
 
-        int StartUpRecover();
-        int SaveOnExit();
+        void StartUpRecover();
+        void SaveOnExit();
 
 
     }
