@@ -42,7 +42,17 @@ namespace ApartmanManagerLib
 
         public override string ToString()
         {
-            return this.guestID.ToString() + "|" + this.itsReservation.ReservationId.ToString() + "|" + this.familyName + "|" + this.firstName + "|" + this.phoneNumber
+            int ReservationId;
+            if (this.itsReservation != null)
+            {
+                ReservationId = this.itsReservation.ReservationId;
+            }
+            else
+            {
+                ReservationId = 0;
+            }
+
+            return this.guestID.ToString() + "|" + ReservationId.ToString() + "|" + this.familyName + "|" + this.firstName + "|" + this.phoneNumber
                 + "|" + this.address + "|" + this.mail + "|" + this.note;
         }
 
