@@ -19,6 +19,7 @@ namespace ApartmanManagerLib
         {
             System.IO.File.WriteAllText(houseDbPath, String.Empty);
             System.IO.File.WriteAllText(roomDbPath, String.Empty);
+            System.IO.File.WriteAllText(guestDbPath, String.Empty);
 
             WriteObjects(CustomTypes.enSubject.HOUSE, InstanceManager.houseCollection, houseDbPath);
             WriteObjects(CustomTypes.enSubject.ROOM, InstanceManager.roomCollection, roomDbPath);
