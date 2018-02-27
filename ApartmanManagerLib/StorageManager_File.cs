@@ -11,6 +11,7 @@ namespace ApartmanManagerLib
 {
     public class StorageManager_File : IStorageManager
     {
+        //File path specifications
         public static string houseDbPath = @"..\..\Data\dbHouse.adb";
         public static string roomDbPath = @"..\..\Data\dbRoom.adb";
         public static string guestDbPath = @"..\..\Data\dbGuest.adb";
