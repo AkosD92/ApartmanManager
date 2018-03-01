@@ -13,7 +13,7 @@ namespace ApartmanManagerLib
         /*Static collections containing objects*/
         public static ObservableCollection<House> houseCollection = new ObservableCollection<House>();
         public static ObservableCollection<Room> roomCollection = new ObservableCollection<Room>();
-        public static ObservableCollection<Guest> guestCollection = new ObservableCollection<Guest>();
+        public static ObservableCollection<Guest> archiveGuestCollection = new ObservableCollection<Guest>();
         public static ObservableCollection<Reservation> reservationCollection = new ObservableCollection<Reservation>();
 
 
@@ -59,9 +59,9 @@ namespace ApartmanManagerLib
         public static void CreateGuest(string familyName, string firstName, string tel, string mail, string address, string note)
         {
             int calculatedGuestId = 1;
-            if (InstanceManager.guestCollection.Count != 0)
+            if (InstanceManager.archiveGuestCollection.Count != 0)
             {
-                foreach (Guest g in InstanceManager.guestCollection)
+                foreach (Guest g in InstanceManager.archiveGuestCollection)
                 {
                     if (g.GuestId >= calculatedGuestId)
                     {
@@ -70,7 +70,7 @@ namespace ApartmanManagerLib
                 }
             }
 
-            InstanceManager.guestCollection.Add(new Guest(calculatedGuestId, null, familyName, firstName, tel, mail, address, note));
+            InstanceManager.archiveGuestCollection.Add(new Guest(calculatedGuestId, null, familyName, firstName, tel, mail, address, note));
         }
         /*---------------------------[***************************]-------------------------------*/
 
@@ -99,7 +99,7 @@ namespace ApartmanManagerLib
 
         }
 
-        public static void LoadGuest(string loadedGuestId, string loadedReservationId, string loadedFamilyName, string loadedFirstName, string loadedTel, string loadedAddress,
+        public static void LoadArchiveGuest(string loadedGuestId, string loadedReservationId, string loadedFamilyName, string loadedFirstName, string loadedTel, string loadedAddress,
             string loadedMail, string loadedNote)
         {
             Reservation linkedReservation = null;
@@ -112,7 +112,7 @@ namespace ApartmanManagerLib
                 }
             }
 
-            guestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName, 
+            archiveGuestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName, 
                 loadedTel, loadedAddress, loadedMail, loadedNote));
         }
         /*---------------------------[***************************]-------------------------------*/

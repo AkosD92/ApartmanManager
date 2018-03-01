@@ -30,7 +30,7 @@ namespace ApartmanManager
         {
             InitializeComponent();
             ClearFields();
-            GuestListView.ItemsSource = InstanceManager.guestCollection;
+            GuestListView.ItemsSource = InstanceManager.archiveGuestCollection;
         }
 
         private void ClearFields()
