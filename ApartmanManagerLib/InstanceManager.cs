@@ -14,6 +14,7 @@ namespace ApartmanManagerLib
         public static ObservableCollection<House> houseCollection = new ObservableCollection<House>();
         public static ObservableCollection<Room> roomCollection = new ObservableCollection<Room>();
         public static ObservableCollection<Guest> archiveGuestCollection = new ObservableCollection<Guest>();
+        public static ObservableCollection<Guest> activeGuestCollection = new ObservableCollection<Guest>();
         public static ObservableCollection<Reservation> reservationCollection = new ObservableCollection<Reservation>();
 
 
@@ -104,6 +105,15 @@ namespace ApartmanManagerLib
         {
             Reservation linkedReservation = null;
 
+            archiveGuestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName, 
+                loadedTel, loadedAddress, loadedMail, loadedNote));
+        }
+
+        public static void LoadActiveGuest(string loadedGuestId, string loadedReservationId, string loadedFamilyName, string loadedFirstName, string loadedTel, string loadedAddress,
+        string loadedMail, string loadedNote)
+        {
+            Reservation linkedReservation = null;
+
             foreach (Reservation res in reservationCollection)
             {
                 if (res.ReservationId == int.Parse(loadedReservationId))
@@ -112,7 +122,7 @@ namespace ApartmanManagerLib
                 }
             }
 
-            archiveGuestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName, 
+            activeGuestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName,
                 loadedTel, loadedAddress, loadedMail, loadedNote));
         }
         /*---------------------------[***************************]-------------------------------*/

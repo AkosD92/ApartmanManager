@@ -25,15 +25,9 @@
         </StackPanel>
         </ToolBar>
         <ToolBar  Grid.Row="0">
-            <Button Name="BtnReserve" IsEnabled="False">
-                <StackPanel  Orientation="Horizontal">
-                    <Image Source="Icons/booking_1.png"  />
-                    <TextBlock Margin="3,0,0,0">Foglalás</TextBlock>
-                </StackPanel>
-            </Button>
             <Button Name="BtnGuests" IsEnabled="False" Click="BtnGuests_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Icons/guest_2.png"  />
+                    <Image Source="Icons/booking_1.png"  />
                     <TextBlock Margin="3,0,0,0">Vendégek</TextBlock>
                 </StackPanel>
             </Button>

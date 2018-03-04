@@ -21,8 +21,8 @@ namespace ApartmanManager
     public partial class RoomWindow : Window
     {
 
-        string DefaultRoomName = "Szoba neve/száma";
-        string DefaultBedNumber = "Ágyak száma";
+        string DefaultRoomName = "Név/Szám";
+        string DefaultBedNumber = "Ágyak";
         string DefaultNote = "Megjegyzés";
 
         public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
@@ -33,7 +33,6 @@ namespace ApartmanManager
             BedsField.Text = DefaultBedNumber;
             NoteField.Text = DefaultNote;
             HouseSelector_SelectionChanged(null, null);
-            RoomTab.IsSelected = true;
         }
 
         public RoomWindow()
@@ -67,7 +66,6 @@ namespace ApartmanManager
         {
             if (RoomListView.SelectedItem != null)
             {
-                ParamTab.IsEnabled = true;
                 PopulateRoomSetup();
             }
         }
@@ -76,8 +74,6 @@ namespace ApartmanManager
         {
             if (RoomListView.SelectedItem != null)
             {
-                ParamTab.IsEnabled = true;
-                ParamTab.IsSelected = true;
                 PopulateRoomSetup();
             }
         }

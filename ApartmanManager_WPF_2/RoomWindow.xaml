@@ -7,7 +7,7 @@
         xmlns:src="clr-namespace:ApartmanManagerLib;assembly=ApartmanManagerLib"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="Szobák" MinHeight="420" MinWidth="600" Height="420" Width="420" Icon="Icons/key_5.png">
+        Title="Szobák" MinHeight="420" MinWidth="700" Height="420" Width="700" Icon="Icons/key_5.png">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -45,13 +45,17 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-
-
+                        <Button x:Name="BtnAdd" IsEnabled="True" Width="90" Click="BtnAdd_Click" Margin="140,0,0,0" >
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="Icons/plus.png"  />
+                                <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Beállít"/></TextBlock>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                    <ListView Name="RoomListView" Margin="10,10,10,5" Grid.Row="1" SelectionChanged="RoomListView_SelectionChanged" MouseDoubleClick="RoomListView_MouseDoubleClick">
+
+                    <ListView Name="RoomListView" Margin="10,10,0,5" Grid.Row="1" SelectionChanged="RoomListView_SelectionChanged" MouseDoubleClick="RoomListView_MouseDoubleClick" HorizontalAlignment="Left" Width="435">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding RoomID}"/>
                                 <GridViewColumn Header="Szoba név" Width="100" DisplayMemberBinding="{Binding RoomName}"/>
                                 <GridViewColumn Header="Ágyak" Width="50" DisplayMemberBinding="{Binding NumberOfBeds}"/>
                                 <GridViewColumn Header="Foglalás" Width="80" DisplayMemberBinding="{Binding ReservationID}"/>
@@ -59,43 +63,26 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <GroupBox Header="Adatok" HorizontalAlignment="Left" Height="275" Margin="450,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="230" FontSize="14">
+                        <Grid>
+                            <TextBlock Name="HouseNameField"  HorizontalAlignment="Left" Height="25" Margin="105,15,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
+                            <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,15,0,0" TextWrapping="Wrap" Text="Ház:" VerticalAlignment="Top" Width="90" FontSize="14"/>
+
+                            <TextBlock  Text="Szoba neve:" HorizontalAlignment="Left" Height="25" Margin="10,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
+                            <TextBox Name="RoomNameField"  HorizontalAlignment="Left" Height="25" Margin="105,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
+
+                            <TextBlock  Text="Ágyak száma:" HorizontalAlignment="Left" Height="25" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
+                            <TextBox Name="BedsField"  HorizontalAlignment="Left" Height="25" Margin="105,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
+
+                            <TextBlock  Text="Megjegyzés:" HorizontalAlignment="Left" Height="25" Margin="10,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
+                            <TextBox Name="NoteField" HorizontalAlignment="Left" Height="72" Margin="10,167,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
+
+                        </Grid>
+                    </GroupBox>
 
                 </Grid>
 
             </TabItem>
-            <TabItem Name="ParamTab" Header="Paraméterek" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" IsEnabled="False">
-                <Grid Background="#FFE0E0E0" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="265*"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel  Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="3,3,0,0" Grid.Column="1">
-
-                        <Button Name="BtnAdd" IsEnabled="True" Width="80" Click="BtnAdd_Click" >
-                            <StackPanel  Orientation="Horizontal">
-                                <Image Source="Icons/plus.png"  />
-                                <TextBlock Margin="3,0,0,0" FontSize="16">Beállít</TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <TextBlock Margin="10,0,0,0" FontSize="18">Szobához tartozó adatok megadáas</TextBlock>
-
-                    <TextBlock Name="HouseNameField"  HorizontalAlignment="Left" Height="25" Margin="130,15,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180" FontSize="16"/>
-                    <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ház:" VerticalAlignment="Top" Width="100" FontSize="16"/>
-
-                    <TextBlock  Text="Szoba neve:" HorizontalAlignment="Left" Height="25" Margin="10,63,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100" FontSize="16"/>
-                    <TextBox Name="RoomNameField"  Text="Szoba neve/száma" HorizontalAlignment="Left" Height="25" Margin="130,63,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180" FontSize="16"/>
-
-                    <TextBlock  Text="Ágyak száma:" HorizontalAlignment="Left" Height="25" Margin="10,93,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100" FontSize="16"/>
-                    <TextBox Name="BedsField" Text="Ágyak száma" HorizontalAlignment="Left" Height="25" Margin="130,93,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180" FontSize="16"/>
-
-                    <TextBlock  Text="Megjegyzés:" HorizontalAlignment="Left" Height="25" Margin="10,123,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100" FontSize="16"/>
-                    <TextBox Name="NoteField" Text="Megjegyzés" HorizontalAlignment="Left" Height="80" Margin="130,123,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="240" FontSize="16"/>
-                </Grid>
-            </TabItem>
-
         </TabControl>
 
     </Grid>

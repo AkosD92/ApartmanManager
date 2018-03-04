@@ -42,7 +42,6 @@ namespace ApartmanManager
             {
                 BtnHouses.IsEnabled = true;
                 BtnReceipts.IsEnabled = true;
-                BtnReserve.IsEnabled = true;
                 BtnSettings.IsEnabled = true;
                 BtnRooms.IsEnabled = true;
                 BtnGuests.IsEnabled = true;

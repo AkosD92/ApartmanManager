@@ -15,16 +15,20 @@ namespace ApartmanManagerLib
         public static string houseDbPath = @"..\..\Data\dbHouse.adb";
         public static string roomDbPath = @"..\..\Data\dbRoom.adb";
         public static string archiveGuestDbPath = @"..\..\Data\dbGuest.adb";
+        public static string activeGuestDbPath = @"..\..\Data\dbActiveGuest.adb";
 
         public void SaveOnExit()
         {
             System.IO.File.WriteAllText(houseDbPath, String.Empty);
             System.IO.File.WriteAllText(roomDbPath, String.Empty);
             System.IO.File.WriteAllText(archiveGuestDbPath, String.Empty);
+            System.IO.File.WriteAllText(activeGuestDbPath, String.Empty);
 
             WriteObjects(CustomTypes.enSubject.HOUSE, InstanceManager.houseCollection, houseDbPath);
             WriteObjects(CustomTypes.enSubject.ROOM, InstanceManager.roomCollection, roomDbPath);
             WriteObjects(CustomTypes.enSubject.GUEST, InstanceManager.archiveGuestCollection, archiveGuestDbPath);
+            WriteObjects(CustomTypes.enSubject.GUEST, InstanceManager.activeGuestCollection, activeGuestDbPath);
+
         }
 
         public void StartUpRecover()
@@ -32,6 +36,7 @@ namespace ApartmanManagerLib
             ReadObjects(CustomTypes.enSubject.HOUSE, houseDbPath);
             ReadObjects(CustomTypes.enSubject.ROOM, roomDbPath);
             ReadObjects(CustomTypes.enSubject.GUEST, archiveGuestDbPath);
+            ReadObjects(CustomTypes.enSubject.GUEST, activeGuestDbPath);
         }
 
         private void WriteObjects<T>(CustomTypes.enSubject subject, ObservableCollection<T> collection, string path)

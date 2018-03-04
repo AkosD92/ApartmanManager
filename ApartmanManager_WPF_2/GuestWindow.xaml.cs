@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,18 +20,22 @@ namespace ApartmanManager
    
     public partial class GuestWindow : Window
     {
+        public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
+
         string DefaultFirstName = "Keresztnév";
         string DefaultFamilyName = "Vezetéknév";
         string DefaultTel = "Telefonszám";
         string DefaultMail = "E-mail cím";
         string DefaultAddress = "Lakcím";
-        string DefaultNote = "Megjegyzés";
+        string DefaultGuestNote = "Megjegyzés a vendéghez";
 
         public GuestWindow()
         {
             InitializeComponent();
             ClearFields();
             GuestListView.ItemsSource = InstanceManager.archiveGuestCollection;
+            CbxReservationHouse.ItemsSource = InstanceManager.houseCollection;
+            CbxReservationRoom.ItemsSource = filteredRooms;        
         }
 
         private void ClearFields()
@@ -40,10 +45,21 @@ namespace ApartmanManager
             TelField.Text = DefaultTel;
             MailField.Text = DefaultMail;
             AddressField.Text = DefaultAddress;
-            NoteField.Text = DefaultNote;
+            GuestNoteField.Text = DefaultGuestNote;
         }
 
+        private void CbxReservationHouse_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            filteredRooms.Clear();
+            foreach (Room r in InstanceManager.roomCollection)
+            {
+                if (r.ItsHouse == ((House)CbxReservationHouse.SelectedItem))
+                {
+                    filteredRooms.Add(r);
+                }
+            }
 
+        }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +68,7 @@ namespace ApartmanManager
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string gotFirstName = null, gotFamilyName = null, gotTel = null, gotMail = null, gotAddress = null, gotNote = null;
+            string gotFirstName = null, gotFamilyName = null, gotTel = null, gotMail = null, gotAddress = null, gotGuestNote = null;
             StringBuilder errString = new StringBuilder();
             bool check = true;
 
@@ -87,15 +103,15 @@ namespace ApartmanManager
                 errString.AppendLine(DefaultAddress);
             }
             //Read in the note
-            if (NoteField.Text != DefaultNote) { gotNote = NoteField.Text; }
+            if (GuestNoteField.Text != DefaultGuestNote) { gotGuestNote = GuestNoteField.Text; }
             else {
-                gotNote = "-";     
+                gotGuestNote = "-";     
             }
 
             //if everything was ok, create guest
             if (check == true)
             {
-                InstanceManager.CreateGuest(gotFamilyName, gotFirstName, gotTel, gotMail, gotAddress, gotNote);
+                InstanceManager.CreateGuest(gotFamilyName, gotFirstName, gotTel, gotMail, gotAddress, gotGuestNote);
                 MessageBox.Show("Vendég hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
                 ClearFields();
             }
