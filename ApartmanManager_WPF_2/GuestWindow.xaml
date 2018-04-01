@@ -42,11 +42,10 @@
                     <ListView Name="ActiveGuestListView" Margin="10,10,10,5" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding HouseID}"/>
-                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding HouseName}"/>
-                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding NumberOfRooms}"/>
-                                <GridViewColumn Header="Ház" Width="150" DisplayMemberBinding="{Binding Note}"/>
-                                <GridViewColumn Header="Szoba" Width="100" DisplayMemberBinding="{Binding Note}"/>
+                                <GridViewColumn Header="Vezetéknév" Width="100" DisplayMemberBinding="{Binding ItsGuest.FamilyName}"/>
+                                <GridViewColumn Header="Keresztnév" Width="100" DisplayMemberBinding="{Binding ItsGuest.FirstName}"/>
+                                <GridViewColumn Header="Ház" Width="100" DisplayMemberBinding="{Binding ItsRoom.ItsHouse.HouseName}"/>
+                                <GridViewColumn Header="Szoba" Width="80" DisplayMemberBinding="{Binding ItsRoom.RoomName}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -54,38 +53,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Archívum" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="80">
-                <Grid Background="#FFE0E0E0" Margin="0,0,0,0">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="89*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel  Orientation="Horizontal">
-                        <Image Source="Icons/guest_2.png" Margin="15,0,0,0"  />
-                        <TextBlock Margin="10,0,0,0" FontSize="18"><Run Text="Archív"/><Run Text=" vendég"/><Run Text="ek"/></TextBlock>
-                        <TextBox Margin="30,0,0,0" FontSize="16" Width="150" Name="GuestFilterBox"></TextBox>
-                        <Button x:Name="BtnDelete" IsEnabled="True" Margin="10,0,0,0" >
-                            <StackPanel  Orientation="Horizontal">
-                                <Image Source="Icons/delete_1.png"  />
-                                <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Vendég törlés"/></TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <ListView Name="GuestListView" Margin="10,10,10,5" Grid.Row="1">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding GuestId}"/>
-                                <GridViewColumn Header="Vezetéknév" Width="120" DisplayMemberBinding="{Binding FamilyName}"/>
-                                <GridViewColumn Header="Keresztnév" Width="120" DisplayMemberBinding="{Binding FirstName}"/>
-                                <GridViewColumn Header="Megjegyzés" Width="200" DisplayMemberBinding="{Binding Note}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-
-                </Grid>
-            </TabItem>
+            
             <TabItem Header="Új vendég" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="80">
                 <Grid Background="#FFE0E0E0" >
                     <Grid.RowDefinitions>
@@ -155,6 +123,26 @@
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,170,0,0" TextWrapping="Wrap" Text="Előleg:" VerticalAlignment="Top" Width="100" FontSize="16"/>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,195,0,0" TextWrapping="Wrap" Text="Hátralék:" VerticalAlignment="Top" Width="100" FontSize="16"/>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,232,0,0" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="100" FontSize="16"/>
+                            <DatePicker Name="ArrivalField" Margin="132,4,10,269" FirstDayOfWeek="Monday">
+                                
+                            </DatePicker>
+                            <DatePicker Name="LeaveField" Margin="132,33,10,240" FirstDayOfWeek="Monday">
+
+                            </DatePicker>
+
+                            <TextBox Name="PersonsField" Margin="132,60,81,214"/>
+                            <TextBox Name="InfantsField" Margin="132,85,81,189"/>
+                            <TextBox Name="CostField" Margin="132,120,10,154" />
+                            <ComboBox Name="CbxPayMethodField" Margin="132,145,10,129" FontSize="14" >
+                                <ComboBoxItem Content="BANKKÁRTYA"/>
+                                <ComboBoxItem Content="KÉSZPÉNZ"/>
+                                <ComboBoxItem Content="SZÉP - OTP"/>
+                                <ComboBoxItem Content="SZÉP - MKB"/>
+                                <ComboBoxItem Content="SZÉP - KnH"/>
+                            </ComboBox>
+                            <TextBox Name="PrepaidField" Margin="132,170,10,104" TextChanged="PrepaidField_TextChanged"/>
+                            <TextBox Name="RemainderField" Margin="132,195,10,79"/>
+                            <TextBox Name="ReservationNoteField" Margin="132,232,10,10" FontSize="12" TextWrapping="Wrap"/>
                         </Grid>
                     </GroupBox>
 

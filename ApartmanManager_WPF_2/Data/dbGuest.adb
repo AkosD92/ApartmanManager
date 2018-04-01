@@ -1,1 +1,1 @@
-1|0|Gipsz|Jakab|44545|valami|valami|nincs
+1|0|G|Jakab|355-646|gj@mail.hu|Lakcíme|Megjegyzés a vendég

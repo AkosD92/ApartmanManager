@@ -14,20 +14,20 @@ namespace ApartmanManagerLib
         //File path specifications
         public static string houseDbPath = @"..\..\Data\dbHouse.adb";
         public static string roomDbPath = @"..\..\Data\dbRoom.adb";
-        public static string archiveGuestDbPath = @"..\..\Data\dbGuest.adb";
-        public static string activeGuestDbPath = @"..\..\Data\dbActiveGuest.adb";
+        public static string GuestDbPath = @"..\..\Data\dbGuest.adb";
+        public static string reservationDbPath = @"..\..\Data\dbReservation.adb";
 
         public void SaveOnExit()
         {
             System.IO.File.WriteAllText(houseDbPath, String.Empty);
             System.IO.File.WriteAllText(roomDbPath, String.Empty);
-            System.IO.File.WriteAllText(archiveGuestDbPath, String.Empty);
-            System.IO.File.WriteAllText(activeGuestDbPath, String.Empty);
+            System.IO.File.WriteAllText(GuestDbPath, String.Empty);
+            System.IO.File.WriteAllText(reservationDbPath, String.Empty);
 
             WriteObjects(CustomTypes.enSubject.HOUSE, InstanceManager.houseCollection, houseDbPath);
             WriteObjects(CustomTypes.enSubject.ROOM, InstanceManager.roomCollection, roomDbPath);
-            WriteObjects(CustomTypes.enSubject.GUEST, InstanceManager.archiveGuestCollection, archiveGuestDbPath);
-            WriteObjects(CustomTypes.enSubject.GUEST, InstanceManager.activeGuestCollection, activeGuestDbPath);
+            WriteObjects(CustomTypes.enSubject.GUEST, InstanceManager.guestCollection, GuestDbPath);
+            WriteObjects(CustomTypes.enSubject.RESERVATION, InstanceManager.reservationCollection, reservationDbPath);
 
         }
 
@@ -35,8 +35,8 @@ namespace ApartmanManagerLib
         {
             ReadObjects(CustomTypes.enSubject.HOUSE, houseDbPath);
             ReadObjects(CustomTypes.enSubject.ROOM, roomDbPath);
-            ReadObjects(CustomTypes.enSubject.GUEST, archiveGuestDbPath);
-            ReadObjects(CustomTypes.enSubject.GUEST, activeGuestDbPath);
+            ReadObjects(CustomTypes.enSubject.GUEST, GuestDbPath);
+            ReadObjects(CustomTypes.enSubject.RESERVATION, reservationDbPath);
         }
 
         private void WriteObjects<T>(CustomTypes.enSubject subject, ObservableCollection<T> collection, string path)
@@ -81,13 +81,21 @@ namespace ApartmanManagerLib
                     }
                     else if (subject == CustomTypes.enSubject.GUEST)
                     {
+                        InstanceManager.LoadActiveGuest(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7]);
+                    }
+                    else if (subject == CustomTypes.enSubject.RESERVATION)
+                    {
+                        InstanceManager.LoadReservation(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7], fields[8], fields[9], fields[10], fields[11]);
+                    }
+                    else if (subject == CustomTypes.enSubject.ARCHIVEGUEST)
+                    {
                         InstanceManager.LoadArchiveGuest(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7]);
                     }
                     else
                     {
                         //do nothing
                     }
-                   
+
                 }
                 file.Close();
             }
