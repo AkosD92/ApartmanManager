@@ -230,6 +230,27 @@ namespace ApartmanManager
             remainderValue = costValue - prepaidValue;
             RemainderField.Text = Convert.ToString(remainderValue);
         }
+
+        private void ActiveGuestListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ActiveGuestListView.SelectedItem != null)
+            {
+                dReservationIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ReservationId.ToString();
+                dRoomIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsRoom.RoomID.ToString();
+                dGuestIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsGuest.GuestId.ToString();
+                dArrivalField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Arrival.ToString();
+                dLeaveField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Leave.ToString();
+                dPersonsField.Text = ((Reservation)ActiveGuestListView.SelectedItem).NumberOfPersons.ToString();
+                dInfantsField.Text = ((Reservation)ActiveGuestListView.SelectedItem).NumberOfInfants.ToString();
+                dPaytypeField.Text = ((Reservation)ActiveGuestListView.SelectedItem).PayMethod.ToString();
+                dCostField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Cost.ToString();
+                dPaidField.Text = ((Reservation)ActiveGuestListView.SelectedItem).CostPrepaid.ToString();
+                dRemainderField.Text = ((Reservation)ActiveGuestListView.SelectedItem).CostRemainder.ToString();
+                dNoteField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Note;
+            }
+        }
+
+       
     }
 
 
