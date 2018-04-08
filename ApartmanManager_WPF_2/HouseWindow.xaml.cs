@@ -48,32 +48,34 @@ namespace ApartmanManager
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             //create locals
-            string gotName= null, gotNote = null;
-            byte gotRooms = 0;
+            string[] gotHouseData = new string[4]; 
 
             bool check = true;
             StringBuilder errString = new StringBuilder() ;
 
             //get house name
-            if (HouseNameField.Text != DefaultHouseName) { gotName = HouseNameField.Text;}
+            if (HouseNameField.Text != DefaultHouseName) { gotHouseData[(int)CustomTypes.enHouse.name] = HouseNameField.Text;}
             else {
                 errString.AppendLine(DefaultHouseName); ;
                 check = false;
             }
             //get number of rooms
-            if (!Byte.TryParse(RoomNumberField.Text, out gotRooms))
-            {
-                errString.AppendLine(DefaultRoomNumber);
-                check = false;
-            }
+            gotHouseData[(int)CustomTypes.enHouse.rooms] = RoomNumberField.Text;
+          
             //get note
-            if (NoteField.Text != DefaultNote){ gotNote = NoteField.Text; }
-            else { gotNote="-";}
+            if(NoteField.Text != DefaultNote)
+            {
+                gotHouseData[(int)CustomTypes.enHouse.note] = NoteField.Text;
+            }
+            else
+            {
+                gotHouseData[(int)CustomTypes.enHouse.note] = "-";
+            }
 
             //if everything was ok, create the house and the rooms
             if (check == true)
             {
-                InstanceManager.CreateHouse(gotName, gotRooms, gotNote); 
+                InstanceManager.AddHouse(gotHouseData, CustomTypes.enObjAddType.CREATE); 
                 MessageBox.Show("Ház hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
                 ClearFields();
             }

@@ -1,3 +1,2 @@
-1|1|1|SZ1|2|Szoba megjegyzés
-2|2|2|F1|1|+1 pótágy
-3|0|2|E1|2|Nincs pótágy
+1;0;1;sz1;1;szoba1 megjegyzés
+2;1;1;sz2;3;szoba2 megjegyzés

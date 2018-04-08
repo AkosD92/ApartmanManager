@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ApartmanManager"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="Vendégek" MinHeight="300" MinWidth="350" Height="520" Width="670" MaxHeight="520" MaxWidth="670" Icon="Icons/guest_2.png">
+        Title="Vendégek" MinHeight="300" MinWidth="350" Height="550" Width="690" MaxHeight="550" MaxWidth="690" Icon="Icons/guest_2.png">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -15,6 +15,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel  Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,3,3" Grid.Column="1">
+
+
 
             <Button x:Name="BtnCancel" IsEnabled="True" Width="100" Click="BtnCancel_Click" >
                 <StackPanel  Orientation="Horizontal">
@@ -25,23 +27,24 @@
 
         </StackPanel>
 
-        <TabControl Grid.Row="0" Grid.Column="0" TabStripPlacement="Top" Margin="3,3,3,3" >
+        <TabControl Grid.Row="0" Grid.Column="0" TabStripPlacement="Top" Margin="3,3,0,3" >
             <TabItem Header="Aktív vendégek" HorizontalAlignment="Left" Height="25" Margin="0" VerticalAlignment="Top" Width="100" >
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <Grid Background="#FFE0E0E0" Margin="0,0,0,0">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,0,1,0">
+                    <Grid Background="#FFE0E0E0" Margin="0,0,0,0" Height="440" Width="660">
 
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="89*"/>
+                            <RowDefinition Height="93*"/>
                         </Grid.RowDefinitions>
+
 
                         <StackPanel  Orientation="Horizontal">
                             <Image Source="Icons/booking_1.png" Margin="15,0,0,0"  />
                             <TextBlock Margin="10,0,0,0" FontSize="18">Aktív vendégek</TextBlock>
 
                         </StackPanel>
-                        <ListView Name="ActiveGuestListView" Margin="10,10,253,5" Grid.Row="1" SelectionChanged="ActiveGuestListView_SelectionChanged">
+                        <ListView Name="ActiveGuestListView" Margin="10,10,0,8" Grid.Row="1" SelectionChanged="ActiveGuestListView_SelectionChanged" HorizontalAlignment="Left" Width="367">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Vezetéknév" Width="100" DisplayMemberBinding="{Binding ItsGuest.FamilyName}"/>
@@ -52,11 +55,13 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <GroupBox Header="Foglalás adatok" Height="360" Margin="402,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16">
+                        <GroupBox Header="Foglalás adatok" Height="390" Margin="385,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" Width="255">
                             <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="166*"/>
+                                    <RowDefinition Height="15*"/>
+                                </Grid.RowDefinitions>
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,10,0,0" TextWrapping="Wrap" Text="Foglalás azonosító:" VerticalAlignment="Top" Width="124" FontSize="14"/>
-                                <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,30,0,0" TextWrapping="Wrap" Text="Szoba azonosító:" VerticalAlignment="Top" Width="124" FontSize="14"/>
-                                <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" TextWrapping="Wrap" Text="Vendég azonosító:" VerticalAlignment="Top" Width="124" FontSize="14"/>
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,75,0,0" TextWrapping="Wrap" Text="Érkezés:" VerticalAlignment="Top" Width="124" FontSize="14"/>
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,95,0,0" TextWrapping="Wrap" Text="Távozás:" VerticalAlignment="Top" Width="124" FontSize="14"/>
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,120,0,0" TextWrapping="Wrap" Text="Személyek:" VerticalAlignment="Top" Width="124" FontSize="14"/>
@@ -68,20 +73,31 @@
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,250,0,0" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="124" FontSize="14"/>
 
                                 <TextBlock Name="dReservationIdField" HorizontalAlignment="Left" Height="20" Margin="129,10,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dRoomIdField" HorizontalAlignment="Left" Height="20" Margin="129,30,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dGuestIdField" HorizontalAlignment="Left" Height="20" Margin="129,50,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dArrivalField" HorizontalAlignment="Left" Height="20" Margin="129,75,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dLeaveField" HorizontalAlignment="Left" Height="20" Margin="129,95,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dPaytypeField" HorizontalAlignment="Left" Height="20" Margin="129,165,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dNoteField" HorizontalAlignment="Left" Height="72" Margin="129,255,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="10"/>
+                                <TextBox Name="dArrivalField" HorizontalAlignment="Left" Height="20" Margin="129,75,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dLeaveField" HorizontalAlignment="Left" Height="20" Margin="129,95,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dPaytypeField" HorizontalAlignment="Left" Height="20" Margin="129,165,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dNoteField" HorizontalAlignment="Left" Height="52" Margin="0,271,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="236" FontSize="11"/>
 
+                                <Button x:Name="BtnModify" IsEnabled="True" Click="BtnCancel_Click"  Grid.Row="1" Margin="31,0,112,0">
+                                    <StackPanel  Orientation="Horizontal">
+                                        <Image Source="Icons/edit_1.png"  />
+                                        <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Modosít"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="BtnDelete" IsEnabled="True" Click="BtnCancel_Click" Margin="136,0,7,0" Grid.Row="1">
+                                    <StackPanel  Orientation="Horizontal">
+                                        <Image Source="Icons/delete_1.png"  />
+                                        <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Törlés"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
                             </Grid>
                         </GroupBox>
+
 
                     </Grid>
                 </ScrollViewer>
@@ -146,7 +162,7 @@
                             </ComboBox>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Foglalás" HorizontalAlignment="Left" Height="325" Margin="315,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="305" FontSize="14">
+                    <GroupBox Header="Foglalás" HorizontalAlignment="Left" Height="325" Margin="358,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="305" FontSize="14">
                         <Grid>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" Text="Érkezés:" VerticalAlignment="Top" Width="100" FontSize="16"/>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,35,0,0" TextWrapping="Wrap" Text="Távozás:" VerticalAlignment="Top" Width="100" FontSize="16"/>

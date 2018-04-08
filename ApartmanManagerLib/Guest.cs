@@ -28,16 +28,16 @@ namespace ApartmanManagerLib
         public string Note { get { return this.note; } set { this.note = value; } }
 
 
-        public Guest(int guestID, Reservation itsReservation, string familyName, string firstName, string phoneNumber, string address, string mail, string note)
+        public Guest(int argGuestId, Reservation argItsReservation,  string[] argGuestData)
         {
-            this.guestID = guestID;
-            this.itsReservation = itsReservation;
-            this.familyName = familyName;
-            this.firstName = firstName;
-            this.phoneNumber = phoneNumber;
-            this.address = address;
-            this.mail = mail;
-            this.note = note;
+            guestID = argGuestId;
+            itsReservation = argItsReservation;
+            familyName = argGuestData[(int)CustomTypes.enGuest.familyname];
+            firstName = argGuestData[(int)CustomTypes.enGuest.firstname];
+            phoneNumber = argGuestData[(int)CustomTypes.enGuest.tel];
+            address = argGuestData[(int)CustomTypes.enGuest.address];
+            mail = argGuestData[(int)CustomTypes.enGuest.mail];
+            note = argGuestData[(int)CustomTypes.enGuest.note];
         }
 
         public override string ToString()
@@ -52,8 +52,8 @@ namespace ApartmanManagerLib
                 ReservationId = 0;
             }
 
-            return this.guestID.ToString() + "|" + ReservationId.ToString() + "|" + this.familyName + "|" + this.firstName + "|" + this.phoneNumber
-                + "|" + this.address + "|" + this.mail + "|" + this.note;
+            return string.Format("{0};{1};{2};{3};{4};{5};{6};{7}", guestID, ReservationId, familyName, firstName,
+                phoneNumber, address, mail, note);
         }
 
 

@@ -13,41 +13,22 @@ namespace ApartmanManagerLib
         private byte numberOfRooms;
         private string note;
 
-        public int HouseID
-        {
-            get { return houseID; }
-            set { houseID = HouseID; }
-        }
+        public int HouseID{get { return houseID; }set { houseID = HouseID; }}
+        public string HouseName{ get { return houseName; }set { houseName = HouseName; } }
+        public byte NumberOfRooms{get { return numberOfRooms; }set { numberOfRooms = NumberOfRooms; }}
+        public string Note{get { return note; }set { note = Note; }}
 
-        public string HouseName
+        public House(int argHouseId, string[] argHouseData)
         {
-            get { return houseName; }
-            set { houseName = HouseName; }
-        }
-
-        public byte NumberOfRooms
-        {
-            get { return numberOfRooms; }
-            set { numberOfRooms = NumberOfRooms; }
-        }
-
-        public string Note
-        {
-            get { return note; }
-            set { note = Note; }
-        }
-
-        public House(int id, string name, byte nr, string note)
-        {
-            houseID = id;
-            houseName = name;
-            numberOfRooms = nr;
-            this.note = note;
+            houseID = argHouseId;
+            houseName = argHouseData[(int)CustomTypes.enHouse.name];
+            numberOfRooms = byte.Parse(argHouseData[(int)CustomTypes.enHouse.rooms]);
+            note = argHouseData[(int)CustomTypes.enHouse.note];
         }
 
         public override string ToString()
         {
-            return houseID.ToString()+"|"+houseName+"|"+numberOfRooms.ToString()+"|"+this.note;
+            return string.Format("{0};{1};{2};{3}", houseID, houseName, numberOfRooms, note);
         }
 
 

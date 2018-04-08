@@ -33,10 +33,11 @@ namespace ApartmanManagerLib
 
         public void StartUpRecover()
         {
+            ReadObjects(CustomTypes.enSubject.RESERVATION, reservationDbPath);
             ReadObjects(CustomTypes.enSubject.HOUSE, houseDbPath);
             ReadObjects(CustomTypes.enSubject.ROOM, roomDbPath);
             ReadObjects(CustomTypes.enSubject.GUEST, GuestDbPath);
-            ReadObjects(CustomTypes.enSubject.RESERVATION, reservationDbPath);
+
         }
 
         private void WriteObjects<T>(CustomTypes.enSubject subject, ObservableCollection<T> collection, string path)
@@ -70,26 +71,22 @@ namespace ApartmanManagerLib
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
                 while ((line = file.ReadLine()) != null)
                 {
-                    fields = line.Split('|');
+                    fields = line.Split(';');
                     if (subject == CustomTypes.enSubject.HOUSE)
                     {
-                        InstanceManager.LoadHouse(fields[0], fields[1], fields[2], fields[3]);
+                        InstanceManager.AddHouse(fields, CustomTypes.enObjAddType.LOAD);
                     }
                     else if (subject == CustomTypes.enSubject.ROOM)
                     {
-                        InstanceManager.LoadRoom(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
+                        InstanceManager.AddRoom(fields, CustomTypes.enObjAddType.LOAD);
                     }
                     else if (subject == CustomTypes.enSubject.GUEST)
                     {
-                        InstanceManager.LoadActiveGuest(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7]);
+                        InstanceManager.AddGuest(fields, CustomTypes.enObjAddType.LOAD);
                     }
                     else if (subject == CustomTypes.enSubject.RESERVATION)
                     {
-                        InstanceManager.LoadReservation(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7], fields[8], fields[9], fields[10], fields[11]);
-                    }
-                    else if (subject == CustomTypes.enSubject.ARCHIVEGUEST)
-                    {
-                        InstanceManager.LoadArchiveGuest(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7]);
+                        InstanceManager.AddReservation(fields, CustomTypes.enObjAddType.LOAD);
                     }
                     else
                     {

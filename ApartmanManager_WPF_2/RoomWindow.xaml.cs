@@ -88,23 +88,26 @@ namespace ApartmanManager
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             //create locals
-            string gotName = null, gotNote = null;
-            byte gotBeds = 0;
+            string[] gotRoomData = new string[6];
             bool check = true;
             StringBuilder errString = new StringBuilder();
           
             //get room name
-            if (RoomNameField.Text != DefaultRoomName) { gotName = RoomNameField.Text; }
-            //get number of beds
-            if (!Byte.TryParse(BedsField.Text, out gotBeds))
+            if (RoomNameField.Text != DefaultRoomName)
             {
-                errString.AppendLine(DefaultBedNumber);
-                check = false;
+                gotRoomData[(int)CustomTypes.enRoom.name] = RoomNameField.Text;
             }
+            //get number of beds
+            gotRoomData[(int)CustomTypes.enRoom.beds] = BedsField.Text;
+
             //get note
-            if (NoteField.Text != DefaultNote){gotNote = NoteField.Text; }
-            else{
-                gotNote = "-";
+            if (NoteField.Text != DefaultNote)
+            {
+                gotRoomData[(int)CustomTypes.enRoom.note] = NoteField.Text;
+            }
+            else
+            {
+                gotRoomData[(int)CustomTypes.enRoom.note] = "-";
             }
 
             //if everything was ok, set room data
@@ -114,9 +117,9 @@ namespace ApartmanManager
                 {
                     if (r.RoomID == (((Room)RoomListView.SelectedItem).RoomID))
                     {
-                        r.RoomName = gotName;
-                        r.NumberOfBeds = gotBeds;
-                        r.Note = gotNote;
+                        r.RoomName = gotRoomData[(int)CustomTypes.enRoom.name];
+                        r.NumberOfBeds = byte.Parse(gotRoomData[(int)CustomTypes.enRoom.beds]);
+                        r.Note = gotRoomData[(int)CustomTypes.enRoom.note];
                     }
                 }
                 ClearFields();

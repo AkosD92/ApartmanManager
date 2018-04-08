@@ -23,15 +23,14 @@ namespace ApartmanManagerLib
         public byte NumberOfBeds { get { return numberOfBeds; } set { numberOfBeds = value; } }
         public string Note { get { return note; } set { note = value; } }
 
-        public Room(int roomID, Reservation reservation, House itsHouse, string roomName, byte numberOfBeds, string note)
+        public Room(int argRoomID, Reservation argItsReservation, House argItsHouse, string[] argRoomData)
         {
-            this.roomID = roomID;
-            this.itsReservation = reservation;
-            this.roomName = roomName;
-            this.numberOfBeds = numberOfBeds;
-            this.note = note;
-            this.itsHouse = itsHouse;
-
+            roomID = argRoomID;
+            itsReservation = argItsReservation;
+            itsHouse = argItsHouse;
+            roomName = argRoomData[(int)CustomTypes.enRoom.name];
+            numberOfBeds = byte.Parse(argRoomData[(int)CustomTypes.enRoom.beds]);
+            note = argRoomData[(int)CustomTypes.enRoom.note];
         }
 
         public override string ToString()
@@ -49,10 +48,7 @@ namespace ApartmanManagerLib
                 reservationID = itsReservation.ReservationId;
             }
 
-
-
-            return roomID.ToString() + "|" + reservationID + "|" + houseID.ToString()
-                + "|" + roomName + "|" + numberOfBeds.ToString() + "|" + note;
+            return string.Format("{0};{1};{2};{3};{4};{5}", roomID, reservationID, houseID, roomName, numberOfBeds, note);
         }
 
     }

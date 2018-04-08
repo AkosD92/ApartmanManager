@@ -82,134 +82,98 @@ namespace ApartmanManager
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //Personal data
-            string gotFirstName = null, gotFamilyName = null, gotTel = null, gotMail = null, gotAddress = null, gotGuestNote = null;
             StringBuilder errString = new StringBuilder();
-
-            //Accomodation data
-            Room gotRoom = null;
-            Guest gotGuest = null;
-
-            //Reservation data
-            DateTime gotArrival;
-            DateTime gotLeave;
-            byte gotPersons = 0;
-            byte gotInfants = 0;
-            int gotCost = 0;
-            CustomTypes.enPayMethod gotPayMethod;
-            int gotPrepaid = 0;
-            int gotRemainder = 0;
-            string gotReservationNote;
-
             bool check = true;
 
+            //Personal data
+            string[] gotGuestData = new string[8];
+            
+            //Accomodation data
+            Room gotRoom = null;
+
+            //Reservation data
+            string[] gotResData = new string[10];
+
+
             //Read in the first name
-            if (FirstNameField.Text != DefaultFirstName){gotFirstName = FirstNameField.Text;}
+            if (FirstNameField.Text != DefaultFirstName){gotGuestData[(int)CustomTypes.enGuest.firstname] = FirstNameField.Text;}
             else {
                 check = false;
                 errString.AppendLine(DefaultFirstName);
             }
             //Read in the family name
-            if (FamilyNameField.Text != DefaultFamilyName){gotFamilyName = FamilyNameField.Text; }
-            else {
+            if (FamilyNameField.Text != DefaultFamilyName){ gotGuestData[(int)CustomTypes.enGuest.familyname] = FamilyNameField.Text; }
+            else{
                 check = false;
                 errString.AppendLine(DefaultFamilyName);
             }
             //Read in the tel number
-            if (TelField.Text != DefaultTel) { gotTel = TelField.Text;}
-            else{
+            if (TelField.Text != DefaultTel){gotGuestData[(int)CustomTypes.enGuest.tel] = TelField.Text; }
+            else {
                 check = false;
                 errString.AppendLine(DefaultTel);
             }
             //Read in the mail
-            if (MailField.Text != DefaultMail) { gotMail = MailField.Text; }
+            if (MailField.Text != DefaultMail){gotGuestData[(int)CustomTypes.enGuest.mail] = MailField.Text; }
             else {
                 check = false;
                 errString.AppendLine(DefaultMail);
             }
             //Read in the address
-            if (AddressField.Text != DefaultAddress) { gotAddress = AddressField.Text; }
+            if (AddressField.Text != DefaultAddress){ gotGuestData[(int)CustomTypes.enGuest.address] = AddressField.Text;}
             else {
                 check = false;
                 errString.AppendLine(DefaultAddress);
             }
             //Read in the guest note
-            if (GuestNoteField.Text != DefaultGuestNote) { gotGuestNote = GuestNoteField.Text; }
+            if (GuestNoteField.Text != DefaultGuestNote) { gotGuestData[(int)CustomTypes.enGuest.note] = GuestNoteField.Text; }
             else {
-                gotGuestNote = "-";     
+                gotGuestData[(int)CustomTypes.enGuest.note] = "-";     
             }
 
             //Read room data
             gotRoom = (Room)CbxReservationRoom.SelectedItem;
 
-            gotArrival = (DateTime)ArrivalField.SelectedDate;
-            gotLeave = (DateTime)LeaveField.SelectedDate;
+            gotResData[(int)CustomTypes.enReservation.arrival] = ArrivalField.SelectedDate.ToString();
+            gotResData[(int)CustomTypes.enReservation.leave] = LeaveField.SelectedDate.ToString();
 
             //Get number of persons
-            if (!Byte.TryParse(PersonsField.Text, out gotPersons))
-            {
-                errString.AppendLine(DefaultPersons);
-                check = false;
-            }
+            gotResData[(int)CustomTypes.enReservation.persons] = PersonsField.Text;
+
             //Get number of infants
-            if (!Byte.TryParse(InfantsField.Text, out gotInfants))
-            {
-                errString.AppendLine(DefaultInfants);
-                check = false;
-            }
+            gotResData[(int)CustomTypes.enReservation.infants] = InfantsField.Text;
+
             //Get cost
-            if (!Int32.TryParse(CostField.Text, out gotCost))
-            {
-                errString.AppendLine(DefaultCost);
-                check = false;
-            }
+            gotResData[(int)CustomTypes.enReservation.cost] = CostField.Text;
+
             //Get pay type
-            switch (CbxPayMethodField.SelectedIndex)
-            {
-                case 0:
-                    gotPayMethod = CustomTypes.enPayMethod.KARTYA;
-                    break;
-                case 1:
-                    gotPayMethod = CustomTypes.enPayMethod.KESZPENZ;
-                    break;
-                case 2:
-                    gotPayMethod = CustomTypes.enPayMethod.SZ_OTP;
-                    break;
-                case 3:
-                    gotPayMethod = CustomTypes.enPayMethod.SZ_MKB;
-                    break;
-                case 4:
-                    gotPayMethod = CustomTypes.enPayMethod.SZ_KNH;
-                    break;
-                default:
-                    gotPayMethod = CustomTypes.enPayMethod.KESZPENZ;
-                    errString.AppendLine(PayMethodError);
-                    break;
-            }
+            gotResData[(int)CustomTypes.enReservation.paytype] = CbxPayMethodField.SelectedIndex.ToString();
+
             //Get prepaid value
-            if (!Int32.TryParse(PrepaidField.Text, out gotPrepaid))
-            {
-                errString.AppendLine(DefaultPrepaid);
-                check = false;
-            }
-            //Get remainder value
-            if (!Int32.TryParse(RemainderField.Text, out gotRemainder))
-            {
-                errString.AppendLine(DefaultRemainder);
-                check = false;
-            }
+            gotResData[(int)CustomTypes.enReservation.prepaid] = PrepaidField.Text;
+
+            //Get remainder value 
+            gotResData[(int)CustomTypes.enReservation.remainder] = RemainderField.Text;
+
             //Read in the reservation note
-            if (ReservationNoteField.Text != DefaultReservationNote) { gotReservationNote = ReservationNoteField.Text; }
+            if (ReservationNoteField.Text != DefaultReservationNote) { gotResData[(int)CustomTypes.enReservation.note] = ReservationNoteField.Text; }
             else
             {
-                gotReservationNote = "-";
+                gotResData[(int)CustomTypes.enReservation.note] = "-";
             }
 
             //if everything was ok, create guest
             if (check == true)
             {
-                Guest createdGuest = InstanceManager.CreateGuest(gotFamilyName, gotFirstName, gotTel, gotMail, gotAddress, gotGuestNote);
-                InstanceManager.CreateReservation(gotRoom, createdGuest, gotArrival, gotLeave, gotPersons, gotInfants, gotPayMethod, gotCost, gotPrepaid, gotRemainder, gotReservationNote);
+                Guest guestAdded = InstanceManager.AddGuest(gotGuestData, CustomTypes.enObjAddType.CREATE);
+                Reservation resAdded =  InstanceManager.AddReservation(gotResData, CustomTypes.enObjAddType.CREATE);
+
+                gotRoom.ItsReservation = resAdded;
+                guestAdded.ItsReservation = resAdded;
+
+                resAdded.ItsGuest = guestAdded;
+                resAdded.ItsRoom = gotRoom;
+
                 MessageBox.Show("Vendég hozzáadva!", "Művelet kész", MessageBoxButton.OK, MessageBoxImage.Information);
                 ClearFields();
             }
@@ -236,8 +200,7 @@ namespace ApartmanManager
             if (ActiveGuestListView.SelectedItem != null)
             {
                 dReservationIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ReservationId.ToString();
-                dRoomIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsRoom.RoomID.ToString();
-                dGuestIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsGuest.GuestId.ToString();
+
                 dArrivalField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Arrival.ToString();
                 dLeaveField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Leave.ToString();
                 dPersonsField.Text = ((Reservation)ActiveGuestListView.SelectedItem).NumberOfPersons.ToString();

@@ -1,2 +1,1 @@
-1|Apartman|1|Ház megjegyzés
-2|Resort|2|Resort ház megjegyzés
+1;Apartman;2;ház megjegyzés

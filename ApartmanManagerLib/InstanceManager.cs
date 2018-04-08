@@ -17,175 +17,6 @@ namespace ApartmanManagerLib
         public static ObservableCollection<Reservation> reservationCollection = new ObservableCollection<Reservation>();
 
 
-        /*---------------------------[Object creation methods]-------------------------------*/
-        public static void CreateHouse(string houseName, byte NrRooms, string note)
-        {
-            int calculatedHouseId = InstanceManager.houseCollection.Count + 1;
-
-            if (calculatedHouseId > 1)
-            {
-                foreach (House h in InstanceManager.houseCollection)
-                {
-                    if (h.HouseID >= calculatedHouseId)
-                    {
-                        calculatedHouseId = h.HouseID + 1;
-                    }
-                }
-            }
-
-            House newHouse = new House(calculatedHouseId, houseName, NrRooms, note);
-            houseCollection.Add(newHouse);
-
-            for (int i = 0; i < NrRooms; i++)
-            {
-                int calculatedRoomId = InstanceManager.roomCollection.Count + 1;
-                if (calculatedRoomId > 1)
-                {
-                    foreach (Room r in InstanceManager.roomCollection)
-                    {
-                        if (r.RoomID >= calculatedRoomId)
-                        {
-                            calculatedRoomId = r.RoomID + 1;
-                        }
-                    }
-                }
-
-                roomCollection.Add(new Room(calculatedRoomId, null, newHouse,  calculatedRoomId.ToString(), 0, "Beállításra vár"));
-            }
-
-        }
-
-
-        public static Guest CreateGuest(string familyName, string firstName, string tel, string mail, string address, string note)
-        {
-            int calculatedGuestId = 1;
-            if (InstanceManager.guestCollection.Count != 0)
-            {
-                foreach (Guest g in InstanceManager.guestCollection)
-                {
-                    if (g.GuestId >= calculatedGuestId)
-                    {
-                        calculatedGuestId = g.GuestId + 1;
-                    }
-                }
-            }
-
-            Guest newGuest = new Guest(calculatedGuestId, null, familyName, firstName, tel, mail, address, note);
-            InstanceManager.guestCollection.Add(newGuest);
-            return newGuest;
-        }
-
-
-        public static void CreateReservation(Room pItsRoom, Guest pItsGuest, DateTime pArrival, DateTime pLeave, byte pPersons, byte pInfants, CustomTypes.enPayMethod pPayMethod,
-            int pCost, int pCostPrepaid, int pCostRemainder, string pNote)
-        {
-            int calculatedReservationId = 1;
-            if (InstanceManager.reservationCollection.Count != 0)
-            {
-                foreach (Reservation r in InstanceManager.reservationCollection)
-                {
-                    if (r.ReservationId >= calculatedReservationId)
-                    {
-                        calculatedReservationId= r.ReservationId + 1;
-                    }
-                }
-            }
-
-            InstanceManager.reservationCollection.Add(new Reservation(calculatedReservationId, pItsRoom, pItsGuest, pArrival, pLeave, pPersons, pInfants, pPayMethod, pCost, pCostPrepaid,
-                pCostRemainder, pNote));
-        }
-
-
-        /*---------------------------[***************************]-------------------------------*/
-
-
-        /*---------------------------[Object loader methods]-------------------------------*/
-
-        public static void LoadReservation(string loadedReservationId, string loadedRoomId, string loadedGestId, string loadedArrival, string loadedLeave, 
-            string loadedPersons, string loadedInfants, string loadedPaytype, string loadedCost, string loadedCostPrepaid, string loadedCostRemainder, string loadedNote)
-        {
-            CustomTypes.enPayMethod parsedPaytype = (CustomTypes.enPayMethod)Enum.Parse(typeof(CustomTypes.enPayMethod), loadedPaytype);
-            Room roomToLoad = null;
-            Guest guestToLoad = null;
-
-            foreach (Room r in roomCollection)
-            {
-                if (r.RoomID == int.Parse(loadedRoomId))
-                {
-                    roomToLoad = r;
-                    break;
-                }
-            }
-
-            foreach (Guest g in guestCollection)
-            {
-                if (g.GuestId == int.Parse(loadedGestId))
-                {
-                    guestToLoad = g;
-                    break;
-                }
-            }
-
-            Reservation ReservationToLoad = new Reservation(int.Parse(loadedReservationId), roomToLoad, guestToLoad, DateTime.Parse(loadedArrival), DateTime.Parse(loadedLeave), byte.Parse(loadedPersons),
-                byte.Parse(loadedInfants), parsedPaytype, int.Parse(loadedCost), int.Parse(loadedCostPrepaid), int.Parse(loadedCostRemainder), loadedNote);
-
-            ReservationToLoad.ItsRoom.ItsReservation = ReservationToLoad;
-
-            reservationCollection.Add(ReservationToLoad);
-
-        }
-
-        public static void LoadHouse(string loadedId, string loadedName, string loadedNumRooms, string loadedNote)
-        {
-            houseCollection.Add(new House(int.Parse(loadedId), loadedName, byte.Parse(loadedNumRooms), loadedNote));
-
-        }
-
-        public static void LoadRoom(string loadedRoomId, string loadedReservationId, string loadedHouseId, string loadedRoomName, string loadedNumberOfBeds, string loadedNote)
-        {
-            House houseToLoad = null;
-
-            foreach (House h in InstanceManager.houseCollection)
-            {
-                if (h.HouseID == int.Parse(loadedHouseId))
-                {
-                    houseToLoad = h;
-                    break;
-                }
-            }
-
-            roomCollection.Add(new Room(int.Parse(loadedRoomId), null, houseToLoad, loadedRoomName, byte.Parse(loadedNumberOfBeds), loadedNote));
-
-        }
-
-        public static void LoadArchiveGuest(string loadedGuestId, string loadedReservationId, string loadedFamilyName, string loadedFirstName, string loadedTel, string loadedAddress,
-            string loadedMail, string loadedNote)
-        {
-            Reservation linkedReservation = null;
-
-            guestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName, 
-                loadedTel, loadedAddress, loadedMail, loadedNote));
-        }
-
-        public static void LoadActiveGuest(string loadedGuestId, string loadedReservationId, string loadedFamilyName, string loadedFirstName, string loadedTel, string loadedAddress,
-        string loadedMail, string loadedNote)
-        {
-            Reservation linkedReservation = null;
-
-            foreach (Reservation res in reservationCollection)
-            {
-                if (res.ReservationId == int.Parse(loadedReservationId))
-                {
-                    linkedReservation = res;
-                }
-            }
-
-            guestCollection.Add(new Guest(int.Parse(loadedGuestId), linkedReservation, loadedFamilyName, loadedFirstName,
-                loadedTel, loadedAddress, loadedMail, loadedNote));
-        }
-        /*---------------------------[***************************]-------------------------------*/
-
-
 
         /*---------------------------[Object removal methods]-------------------------------*/
         public static void RemoveHouse(House houseToRemove)
@@ -206,6 +37,178 @@ namespace ApartmanManagerLib
 
         }
         /*---------------------------[***************************]-------------------------------*/
+
+        public static House AddHouse(string[] argFileds, CustomTypes.enObjAddType argHandleMethod)
+        {
+            House houseToAdd = null;
+            if (argHandleMethod == CustomTypes.enObjAddType.CREATE)
+            {
+                int calculatedHouseId = houseCollection.Count + 1;
+                if (calculatedHouseId > 1)
+                {
+                    foreach (House h in houseCollection)
+                    {
+                        if (h.HouseID >= calculatedHouseId)
+                        {
+                            calculatedHouseId = h.HouseID + 1;
+                        }
+                    }
+                }
+
+                houseToAdd = new House(calculatedHouseId, argFileds);
+                houseCollection.Add(houseToAdd);
+
+                for (int i = 0; i < byte.Parse(argFileds[(int)CustomTypes.enHouse.rooms]); i++)
+                {
+                    int calculatedRoomId = roomCollection.Count + 1;
+                    if (calculatedRoomId > 1)
+                    {
+                        foreach (Room r in roomCollection)
+                        {
+                            if (r.RoomID >= calculatedRoomId)
+                            {
+                                calculatedRoomId = r.RoomID + 1;
+                            }
+                        }
+                    }
+
+                    string[] roomArgs = new string[6];
+                    roomArgs[(int)CustomTypes.enRoom.name] = calculatedRoomId.ToString();
+                    roomArgs[(int)CustomTypes.enRoom.beds] = "0";
+                    roomArgs[(int)CustomTypes.enRoom.note] = "Beállításra vár";
+                    roomCollection.Add(new Room(calculatedRoomId, null, houseToAdd, roomArgs));
+                }
+            }
+            else if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
+            {
+                houseToAdd = new House(int.Parse(argFileds[(int)CustomTypes.enHouse.houseId]), argFileds);
+                houseCollection.Add(houseToAdd);
+            }
+            else
+            {
+                //Error
+            }
+            return houseToAdd;
+        }
+
+        public static Room AddRoom(string[] argFields, CustomTypes.enObjAddType argHandleMethod)
+        {
+            Room roomToAdd = null;
+
+            if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
+            {
+                House houseToLoad = null;
+                foreach (House h in houseCollection)
+                {
+                    if (h.HouseID == int.Parse(argFields[(int)CustomTypes.enRoom.houseId]))
+                    {
+                        houseToLoad = h;
+                        break;
+                    }
+                }
+
+                roomToAdd = new Room(int.Parse(argFields[(int)CustomTypes.enRoom.roomId]), null, houseToLoad, argFields);
+
+                foreach (Reservation res in reservationCollection)
+                {
+                    if (int.Parse(argFields[(int)CustomTypes.enRoom.resId]) == res.ReservationId)
+                    {
+                        roomToAdd.ItsReservation = res;
+                        res.ItsRoom = roomToAdd;
+                    }
+                }
+
+                roomCollection.Add(roomToAdd);
+            }
+            else if (argHandleMethod == CustomTypes.enObjAddType.CREATE)
+            {
+                //TODO: Create implementation
+            }
+            else
+            {
+                //Error
+            }
+
+            return roomToAdd;
+        }
+
+        public static Guest AddGuest(string[] argFields, CustomTypes.enObjAddType argHandleMethod)
+        {
+            Guest guestToAdd = null;
+
+            if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
+            {
+                Reservation linkedReservation = null;
+                foreach (Reservation res in reservationCollection)
+                {
+                    if (res.ReservationId == int.Parse(argFields[(int)CustomTypes.enGuest.resId]))
+                    {
+                        linkedReservation = res;
+                    }
+                }
+
+                guestToAdd = new Guest(int.Parse(argFields[(int)CustomTypes.enGuest.guestId]), linkedReservation, argFields);
+                linkedReservation.ItsGuest = guestToAdd;
+                guestCollection.Add(guestToAdd);
+            }
+            else if (argHandleMethod == CustomTypes.enObjAddType.CREATE)
+            {
+                int calculatedGuestId = 1;
+                if (guestCollection.Count != 0)
+                {
+                    foreach (Guest g in guestCollection)
+                    {
+                        if (g.GuestId >= calculatedGuestId)
+                        {
+                            calculatedGuestId = g.GuestId + 1;
+                        }
+                    }
+                }
+                guestToAdd = new Guest(calculatedGuestId, null, argFields);
+                guestCollection.Add(guestToAdd);            
+            }
+            else
+            {
+                //Error
+            }
+            return guestToAdd;
+        }
+
+        public static Reservation AddReservation(string[] argFields, CustomTypes.enObjAddType argHandleMethod)
+        {
+            Reservation resToAdd = null;
+
+            if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
+            {
+                resToAdd = new Reservation(int.Parse(argFields[(int)CustomTypes.enReservation.resId]), argFields);
+                reservationCollection.Add(resToAdd);
+
+            }
+            else if (argHandleMethod == CustomTypes.enObjAddType.CREATE)
+            {
+                int calculatedReservationId = 1;
+                if (reservationCollection.Count != 0)
+                {
+                    foreach (Reservation r in reservationCollection)
+                    {
+                        if (r.ReservationId >= calculatedReservationId)
+                        {
+                            calculatedReservationId = r.ReservationId + 1;
+                        }
+                    }
+                }
+                resToAdd = new Reservation(calculatedReservationId, argFields);
+                reservationCollection.Add(resToAdd);
+            }
+            else
+            {
+                //Error
+            }
+
+
+            return resToAdd;
+        }
+
 
 
 
