@@ -16,6 +16,9 @@ namespace ApartmanManagerLib
         private byte numberOfBeds;
         private string note;
 
+        private bool isOccupied;
+
+
         public int RoomID{ get { return roomID; } set { roomID = value;  } }
         public Reservation ItsReservation{ get { return itsReservation; } set { itsReservation = value; } }
         public House ItsHouse { get { return itsHouse; } set { itsHouse = value; } }
@@ -23,32 +26,30 @@ namespace ApartmanManagerLib
         public byte NumberOfBeds { get { return numberOfBeds; } set { numberOfBeds = value; } }
         public string Note { get { return note; } set { note = value; } }
 
-        public Room(int argRoomID, Reservation argItsReservation, House argItsHouse, string[] argRoomData)
+        public bool IsOccupied { get { return isOccupied; } set { isOccupied = value; } }
+
+        public Room(int argRoomID, House argItsHouse, string[] argRoomData)
         {
             roomID = argRoomID;
-            itsReservation = argItsReservation;
             itsHouse = argItsHouse;
             roomName = argRoomData[(int)CustomTypes.enRoom.name];
             numberOfBeds = byte.Parse(argRoomData[(int)CustomTypes.enRoom.beds]);
             note = argRoomData[(int)CustomTypes.enRoom.note];
+
+            isOccupied = false;
         }
 
         public override string ToString()
         {
             int houseID = 0;
-            int reservationID = 0;
 
             if(itsHouse != null)
             {
                 houseID = itsHouse.HouseID;
             }
 
-            if (itsReservation != null)
-            {
-                reservationID = itsReservation.ReservationId;
-            }
 
-            return string.Format("{0};{1};{2};{3};{4};{5}", roomID, reservationID, houseID, roomName, numberOfBeds, note);
+            return string.Format("{0};{1};{2};{3};{4}", roomID, houseID, roomName, numberOfBeds, note);
         }
 
     }

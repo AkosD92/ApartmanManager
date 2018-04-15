@@ -45,9 +45,12 @@ namespace ApartmanManagerLib
         public string Note { get { return note; } set { note = value; } }
 
         //Constructor
-        public Reservation(int argResId, string[] argResData )
+        public Reservation(int argResId, Room argItsRoom, Guest argItsGuest, string[] argResData )
         {
             reservationID = argResId;
+            itsRoom = argItsRoom;
+            itsGuest = argItsGuest;
+
             arrival = DateTime.Parse(argResData[(int)CustomTypes.enReservation.arrival]);
             leave = DateTime.Parse(argResData[(int)CustomTypes.enReservation.leave]);
             numberOfPersons = byte.Parse(argResData[(int)CustomTypes.enReservation.persons]);
@@ -61,7 +64,7 @@ namespace ApartmanManagerLib
 
         public override string ToString()
         {
-            return string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9}", reservationID, arrival, leave, numberOfPersons,
+            return string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11}", reservationID, ItsRoom.RoomID, ItsGuest.GuestId, arrival, leave, numberOfPersons,
                 numberOfInfants, payMethod, cost, costPrepaid, costRemainder, note);
         }
     }

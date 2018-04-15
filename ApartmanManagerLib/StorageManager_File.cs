@@ -33,11 +33,11 @@ namespace ApartmanManagerLib
 
         public void StartUpRecover()
         {
-            ReadObjects(CustomTypes.enSubject.RESERVATION, reservationDbPath);
+            
             ReadObjects(CustomTypes.enSubject.HOUSE, houseDbPath);
             ReadObjects(CustomTypes.enSubject.ROOM, roomDbPath);
             ReadObjects(CustomTypes.enSubject.GUEST, GuestDbPath);
-
+            ReadObjects(CustomTypes.enSubject.RESERVATION, reservationDbPath);
         }
 
         private void WriteObjects<T>(CustomTypes.enSubject subject, ObservableCollection<T> collection, string path)

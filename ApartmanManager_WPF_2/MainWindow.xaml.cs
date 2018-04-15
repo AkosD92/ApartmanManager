@@ -27,16 +27,15 @@ namespace ApartmanManager
 
         public MainWindow()
         {
-            ProgramFlow.StartUp();
             InitializeComponent();
-
-
+            ProgramFlow.StartUp();
         }
 
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             ProgramFlow.IsLoggedIn = true;
+
 
             if (ProgramFlow.IsLoggedIn == true)
             {

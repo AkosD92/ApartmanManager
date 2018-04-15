@@ -31,10 +31,8 @@ namespace ApartmanManagerLib
         {
 
             StorageManager.StartUpRecover();
+   
 
-
-            
-           
             
         }
 

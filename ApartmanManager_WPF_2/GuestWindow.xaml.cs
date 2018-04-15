@@ -34,7 +34,6 @@ namespace ApartmanManager
         string DefaultPrepaid = "Ebből fizetve";
         string DefaultRemainder = "Hátralék";
         string DefaultReservationNote = "Megjegyzés a foglaláshoz";
-        string PayMethodError = "Fizetés típusa";
 
         public GuestWindow()
         {
@@ -86,13 +85,13 @@ namespace ApartmanManager
             bool check = true;
 
             //Personal data
-            string[] gotGuestData = new string[8];
+            string[] gotGuestData = new string[7];
             
             //Accomodation data
             Room gotRoom = null;
 
             //Reservation data
-            string[] gotResData = new string[10];
+            string[] gotResData = new string[12];
 
 
             //Read in the first name
@@ -133,6 +132,7 @@ namespace ApartmanManager
 
             //Read room data
             gotRoom = (Room)CbxReservationRoom.SelectedItem;
+            gotResData[(int)CustomTypes.enReservation.roomId] = gotRoom.RoomID.ToString();
 
             gotResData[(int)CustomTypes.enReservation.arrival] = ArrivalField.SelectedDate.ToString();
             gotResData[(int)CustomTypes.enReservation.leave] = LeaveField.SelectedDate.ToString();
@@ -166,10 +166,8 @@ namespace ApartmanManager
             if (check == true)
             {
                 Guest guestAdded = InstanceManager.AddGuest(gotGuestData, CustomTypes.enObjAddType.CREATE);
+                gotResData[(int)CustomTypes.enReservation.guestId] = guestAdded.GuestId.ToString();
                 Reservation resAdded =  InstanceManager.AddReservation(gotResData, CustomTypes.enObjAddType.CREATE);
-
-                gotRoom.ItsReservation = resAdded;
-                guestAdded.ItsReservation = resAdded;
 
                 resAdded.ItsGuest = guestAdded;
                 resAdded.ItsRoom = gotRoom;
@@ -200,6 +198,8 @@ namespace ApartmanManager
             if (ActiveGuestListView.SelectedItem != null)
             {
                 dReservationIdField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ReservationId.ToString();
+                dHouseField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsRoom.ItsHouse.HouseName.ToString();
+                dRoomField.Text = ((Reservation)ActiveGuestListView.SelectedItem).ItsRoom.RoomName.ToString();
 
                 dArrivalField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Arrival.ToString();
                 dLeaveField.Text = ((Reservation)ActiveGuestListView.SelectedItem).Leave.ToString();
@@ -213,7 +213,43 @@ namespace ApartmanManager
             }
         }
 
-       
+        private void BtnModify_Click(object sender, RoutedEventArgs e)
+        {
+            Reservation selectedRes = (Reservation)ActiveGuestListView.SelectedItem;
+
+            selectedRes.Arrival = DateTime.Parse(dArrivalField.Text);
+            selectedRes.Leave = DateTime.Parse(dLeaveField.Text);
+            selectedRes.NumberOfPersons = byte.Parse(dPersonsField.Text);
+            selectedRes.NumberOfInfants = byte.Parse(dInfantsField.Text);
+            selectedRes.Cost = int.Parse(dCostField.Text);
+            selectedRes.CostPrepaid = int.Parse(dPaidField.Text);
+            selectedRes.CostRemainder = int.Parse(dRemainderField.Text);
+            selectedRes.Note = dNoteField.Text;
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ActiveGuestListView.SelectedIndex != -1)
+            {
+                MessageBoxResult result = MessageBox.Show("Biztosan törli a kiválasztott vendéget és foglalást?", "Figyelem!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    Reservation selectedRes = (Reservation)ActiveGuestListView.SelectedItem;
+                    InstanceManager.RemoveReservation(selectedRes);
+                }
+            }
+
+        }
+
+        private void DateField_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((ArrivalField.SelectedDate != null) && (LeaveField.SelectedDate != null))
+            {
+
+            }
+        }
     }
 
 

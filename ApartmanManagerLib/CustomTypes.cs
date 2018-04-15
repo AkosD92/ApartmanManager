@@ -28,37 +28,37 @@ namespace ApartmanManagerLib
         public enum enRoom
         {
             roomId = 0,
-            resId = 1,
-            houseId = 2,
-            name = 3,
-            beds = 4,
-            note = 5
+            houseId = 1,
+            name = 2,
+            beds = 3,
+            note = 4
         }
 
         public enum enReservation
         {
             resId = 0,
-            arrival = 1,
-            leave = 2,
-            persons = 3,
-            infants = 4,
-            paytype = 5,
-            cost = 6,
-            prepaid = 7,
-            remainder = 8,
-            note = 9
+            roomId = 1,
+            guestId = 2,
+            arrival = 3,
+            leave = 4,
+            persons = 5,
+            infants = 6,
+            paytype = 7,
+            cost = 8,
+            prepaid = 9,
+            remainder = 10,
+            note = 11
         }
 
         public enum enGuest
         {
             guestId = 0,
-            resId = 1,
-            familyname = 2,
-            firstname = 3,
-            tel = 4,
-            address = 5,
-            mail = 6,
-            note = 7
+            familyname = 1,
+            firstname = 2,
+            tel = 3,
+            address = 4,
+            mail = 5,
+            note = 6
         }
 
         public const int SUCCESS = 0;

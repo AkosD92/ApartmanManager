@@ -1,2 +1,2 @@
-1;0;1;sz1;1;szoba1 megjegyzés
-2;1;1;sz2;3;szoba2 megjegyzés
+1;1;SZ1;2;Megjegyzés szoba 1-hez
+2;1;SZ2;1;Megjegyzés Szoba 2 -höz

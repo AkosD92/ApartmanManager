@@ -23,18 +23,26 @@ namespace ApartmanManagerLib
         {
             if (houseToRemove != null)
             {
-                foreach (Room r in InstanceManager.roomCollection.ToList())
+                foreach (Room r in roomCollection.ToList())
                 {
                     if (r.ItsHouse == houseToRemove)
                     {
-                        InstanceManager.roomCollection.Remove(r);
+                        roomCollection.Remove(r);
                     }
                 }
 
-                InstanceManager.houseCollection.Remove(houseToRemove);
+                houseCollection.Remove(houseToRemove);
                 
             }
 
+        }
+
+        public static void RemoveReservation(Reservation resToRemove)
+        {
+            resToRemove.ItsGuest.ItsReservation = null;
+            resToRemove.ItsRoom.ItsReservation = null;
+
+            reservationCollection.Remove(resToRemove);
         }
         /*---------------------------[***************************]-------------------------------*/
 
@@ -76,7 +84,7 @@ namespace ApartmanManagerLib
                     roomArgs[(int)CustomTypes.enRoom.name] = calculatedRoomId.ToString();
                     roomArgs[(int)CustomTypes.enRoom.beds] = "0";
                     roomArgs[(int)CustomTypes.enRoom.note] = "Beállításra vár";
-                    roomCollection.Add(new Room(calculatedRoomId, null, houseToAdd, roomArgs));
+                    roomCollection.Add(new Room(calculatedRoomId, houseToAdd, roomArgs));
                 }
             }
             else if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
@@ -107,13 +115,12 @@ namespace ApartmanManagerLib
                     }
                 }
 
-                roomToAdd = new Room(int.Parse(argFields[(int)CustomTypes.enRoom.roomId]), null, houseToLoad, argFields);
+                roomToAdd = new Room(int.Parse(argFields[(int)CustomTypes.enRoom.roomId]), houseToLoad, argFields);
 
                 foreach (Reservation res in reservationCollection)
                 {
-                    if (int.Parse(argFields[(int)CustomTypes.enRoom.resId]) == res.ReservationId)
+                    if (int.Parse(argFields[(int)CustomTypes.enReservation.resId]) == res.ReservationId)
                     {
-                        roomToAdd.ItsReservation = res;
                         res.ItsRoom = roomToAdd;
                     }
                 }
@@ -138,17 +145,7 @@ namespace ApartmanManagerLib
 
             if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
             {
-                Reservation linkedReservation = null;
-                foreach (Reservation res in reservationCollection)
-                {
-                    if (res.ReservationId == int.Parse(argFields[(int)CustomTypes.enGuest.resId]))
-                    {
-                        linkedReservation = res;
-                    }
-                }
-
-                guestToAdd = new Guest(int.Parse(argFields[(int)CustomTypes.enGuest.guestId]), linkedReservation, argFields);
-                linkedReservation.ItsGuest = guestToAdd;
+                guestToAdd = new Guest(int.Parse(argFields[(int)CustomTypes.enGuest.guestId]), argFields);          
                 guestCollection.Add(guestToAdd);
             }
             else if (argHandleMethod == CustomTypes.enObjAddType.CREATE)
@@ -164,7 +161,7 @@ namespace ApartmanManagerLib
                         }
                     }
                 }
-                guestToAdd = new Guest(calculatedGuestId, null, argFields);
+                guestToAdd = new Guest(calculatedGuestId, argFields);
                 guestCollection.Add(guestToAdd);            
             }
             else
@@ -177,10 +174,29 @@ namespace ApartmanManagerLib
         public static Reservation AddReservation(string[] argFields, CustomTypes.enObjAddType argHandleMethod)
         {
             Reservation resToAdd = null;
+            Room roomOfRes = null;
+            Guest guestOfRes = null;
 
             if (argHandleMethod == CustomTypes.enObjAddType.LOAD)
             {
-                resToAdd = new Reservation(int.Parse(argFields[(int)CustomTypes.enReservation.resId]), argFields);
+                foreach (Room r in roomCollection)
+                {
+                    if (int.Parse(argFields[(int)CustomTypes.enReservation.roomId]) == r.RoomID)
+                    {
+                        roomOfRes = r;
+                    }
+                }
+
+                foreach (Guest g in guestCollection)
+                {
+                    if (int.Parse(argFields[(int)CustomTypes.enReservation.guestId]) == g.GuestId)
+                    {
+                        guestOfRes = g;
+                    }
+                }
+
+
+                resToAdd = new Reservation(int.Parse(argFields[(int)CustomTypes.enReservation.resId]), roomOfRes, guestOfRes, argFields);
                 reservationCollection.Add(resToAdd);
 
             }
@@ -197,7 +213,23 @@ namespace ApartmanManagerLib
                         }
                     }
                 }
-                resToAdd = new Reservation(calculatedReservationId, argFields);
+
+                foreach (Room r in roomCollection)
+                {
+                    if (int.Parse(argFields[(int)CustomTypes.enReservation.roomId]) == r.RoomID)
+                    {
+                        roomOfRes = r;
+                    }
+                }
+
+                foreach (Guest g in guestCollection)
+                {
+                    if (int.Parse(argFields[(int)CustomTypes.enReservation.guestId]) == g.GuestId)
+                    {
+                        guestOfRes = g;
+                    }
+                }
+                resToAdd = new Reservation(calculatedReservationId, roomOfRes, guestOfRes, argFields);
                 reservationCollection.Add(resToAdd);
             }
             else

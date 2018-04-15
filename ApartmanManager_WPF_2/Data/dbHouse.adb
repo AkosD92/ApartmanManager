@@ -1,1 +1,1 @@
-1;Apartman;2;ház megjegyzés
+1;Apartman;2;Megjegyzés apartmanhoz
