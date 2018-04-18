@@ -26,16 +26,17 @@ namespace ApartmanManager
 
 
         public MainWindow()
-        {
-            InitializeComponent();
-            ProgramFlow.StartUp();
+        {       
+            InitializeComponent();          
+            lvHouses.ItemsSource = InstanceManager.houseCollection;
+            lvRooms.ItemsSource = InstanceManager.roomCollection;
         }
 
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             ProgramFlow.IsLoggedIn = true;
-
+            ProgramFlow.StartUp();
 
             if (ProgramFlow.IsLoggedIn == true)
             {

@@ -177,10 +177,10 @@
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,170,0,0" TextWrapping="Wrap" Text="Előleg:" VerticalAlignment="Top" Width="100" FontSize="16"/>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,195,0,0" TextWrapping="Wrap" Text="Hátralék:" VerticalAlignment="Top" Width="100" FontSize="16"/>
                             <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,232,0,0" TextWrapping="Wrap" Text="Megjegyzés:" VerticalAlignment="Top" Width="100" FontSize="16"/>
-                            <DatePicker Name="ArrivalField" Margin="132,4,10,281" FirstDayOfWeek="Monday" SelectedDateChanged="DateField_SelectedDateChanged">
+                            <DatePicker Name="ArrivalField" Margin="132,4,10,281" FirstDayOfWeek="Monday" SelectedDateChanged="CbxReservationHouse_SelectionChanged" >
 
                             </DatePicker>
-                            <DatePicker Name="LeaveField" Margin="132,28,10,254" FirstDayOfWeek="Monday" SelectedDateChanged="DateField_SelectedDateChanged">
+                            <DatePicker Name="LeaveField" Margin="132,28,10,254" FirstDayOfWeek="Monday" SelectedDateChanged="CbxReservationHouse_SelectionChanged">
 
                             </DatePicker>
 

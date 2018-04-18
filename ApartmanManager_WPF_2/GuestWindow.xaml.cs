@@ -70,9 +70,12 @@ namespace ApartmanManager
                 {
                     filteredRooms.Add(r);
                 }
+
+                
             }
 
         }
+
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -243,13 +246,6 @@ namespace ApartmanManager
 
         }
 
-        private void DateField_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((ArrivalField.SelectedDate != null) && (LeaveField.SelectedDate != null))
-            {
-
-            }
-        }
     }
 
 
