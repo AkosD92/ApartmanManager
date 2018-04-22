@@ -20,8 +20,6 @@ namespace ApartmanManager
    
     public partial class GuestWindow : Window
     {
-        public ObservableCollection<Room> filteredRooms = new ObservableCollection<Room>();
-
         string DefaultFirstName = "Keresztnév";
         string DefaultFamilyName = "Vezetéknév";
         string DefaultTel = "Telefonszám";
@@ -40,7 +38,7 @@ namespace ApartmanManager
             InitializeComponent();
             ClearFields();
             CbxReservationHouse.ItemsSource = InstanceManager.houseCollection;
-            CbxReservationRoom.ItemsSource = filteredRooms;
+            CbxReservationRoom.ItemsSource = CalendarManager.availableRooms;
             ActiveGuestListView.ItemsSource = InstanceManager.reservationCollection;
         }
 
@@ -63,16 +61,11 @@ namespace ApartmanManager
 
         private void CbxReservationHouse_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            filteredRooms.Clear();
-            foreach (Room r in InstanceManager.roomCollection)
+            if ((ArrivalField.SelectedDate != null) && (LeaveField.SelectedDate != null) && (CbxReservationHouse.SelectedItem != null))
             {
-                if (r.ItsHouse == ((House)CbxReservationHouse.SelectedItem))
-                {
-                    filteredRooms.Add(r);
-                }
-
-                
+                CalendarManager.updateAvailableRooms((DateTime)ArrivalField.SelectedDate, (DateTime)LeaveField.SelectedDate, (House)CbxReservationHouse.SelectedItem);
             }
+                
 
         }
 

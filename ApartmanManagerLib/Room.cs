@@ -23,7 +23,7 @@ namespace ApartmanManagerLib
         public byte NumberOfBeds { get { return numberOfBeds; } set { numberOfBeds = value; } }
         public string Note { get { return note; } set { note = value; } }
 
-        //Not stored fields
+        //Not stored fields, calendar fields
         private bool isOccupied;
         public bool IsOccupied { get { return isOccupied; } set { isOccupied = value; } }
 

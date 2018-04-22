@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarManager.cs" />
     <Compile Include="CustomTypes.cs" />
     <Compile Include="StorageManager_File.cs" />
     <Compile Include="Guest.cs" />

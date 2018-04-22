@@ -70,7 +70,7 @@
         </ToolBar>
 
         <Grid Grid.Row="1">
-            <ListView Name="lvHouses" HorizontalAlignment="Left" Height="211" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
+            <ListView Name="lvHouses" HorizontalAlignment="Left" Height="211" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Házak" Width="140" DisplayMemberBinding="{Binding HouseName}"/>

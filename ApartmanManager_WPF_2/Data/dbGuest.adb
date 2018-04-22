@@ -1,1 +1,1 @@
-1;Gipsz;Jakab;355-218;gj address;gj@mail.com;Megjegyzés GJ vendéghez
+1;Gipsz;Jakab;355-218;gjLakcim;gj.mail.com;Megjegyzés GJ vendéghez
