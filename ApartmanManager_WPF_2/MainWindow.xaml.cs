@@ -86,5 +86,10 @@ namespace ApartmanManager
             GuestWin.Owner = this;
             GuestWin.ShowDialog();
         }
+
+        private void MainCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
+        {
+            MainCalendar.DisplayMode = CalendarMode.Year;
+        }
     }
 }

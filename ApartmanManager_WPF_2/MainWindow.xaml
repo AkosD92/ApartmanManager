@@ -11,6 +11,10 @@
 
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -18,13 +22,13 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <ToolBar Grid.Row="2" >
+        <ToolBar Grid.Row="2" Grid.ColumnSpan="2" >
             <StackPanel  Orientation="Horizontal" >
                 <TextBlock Text="Application status: " FontSize="11"/>
                 <TextBlock Name="AppStateTxt" Text="LoggedOff" Background="Orange" FontSize="11"/>
             </StackPanel>
         </ToolBar>
-        <ToolBar  Grid.Row="0">
+        <ToolBar  Grid.Row="0" Grid.ColumnSpan="2">
             <Button Name="BtnGuests" IsEnabled="False" Click="BtnGuests_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Icons/booking_1.png"  />
@@ -69,25 +73,34 @@
 
         </ToolBar>
 
-        <Grid Grid.Row="1">
-            <ListView Name="lvHouses" HorizontalAlignment="Left" Height="211" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Házak" Width="140" DisplayMemberBinding="{Binding HouseName}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <ListView Name="lvRooms" HorizontalAlignment="Left" Height="283" Margin="10,226,0,0" VerticalAlignment="Top" Width="150">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Szobák" Width="140" DisplayMemberBinding="{Binding RoomName}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <Grid Grid.Row="1" Grid.ColumnSpan="1" Background="LightGray">
+            <StackPanel Margin="0,1,0,5" Width="185" >
+                <Calendar Name="MainCalendar" DisplayMode="Year" DisplayModeChanged="MainCalendar_DisplayModeChanged">
+
+                </Calendar>
+                <ListView Name="lvHouses" Margin="3,0,0,0" HorizontalAlignment="Left" Height="115"  VerticalAlignment="Top"  >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Házak" Width="170" DisplayMemberBinding="{Binding HouseName}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView Name="lvRooms" Margin="3,5,0,0" HorizontalAlignment="Left" Height="225"  VerticalAlignment="Top" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Szobák" Width="170" DisplayMemberBinding="{Binding RoomName}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+
 
 
         </Grid>
+        <Grid  Grid.Column="1" Grid.Row="1">
 
+
+        </Grid>
 
     </Grid>
 
