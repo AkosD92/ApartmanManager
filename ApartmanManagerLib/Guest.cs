@@ -36,6 +36,12 @@ namespace ApartmanManagerLib
         public string Mail { get { return this.mail; } set { this.mail = value; pNotify(); } }
         public string Note { get { return this.note; } set { this.note = value; pNotify(); } }
 
+        public Guest(string arg1, string arg2)
+        {
+            firstName = arg1;
+            familyName = arg2;
+
+        }
 
         public Guest(int argGuestId, string[] argGuestData)
         {

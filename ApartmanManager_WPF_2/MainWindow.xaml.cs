@@ -30,6 +30,10 @@ namespace ApartmanManager
             InitializeComponent();          
             lvHouses.ItemsSource = InstanceManager.houseCollection;
             lvRooms.ItemsSource = InstanceManager.roomCollection;
+
+            MainCalendar_DisplayModeChanged(null, null);
+
+
         }
 
 
@@ -89,7 +93,45 @@ namespace ApartmanManager
 
         private void MainCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
+            if (CalendarGrid != null)
+            {
+                var firstDayOfMonth = new DateTime(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month, 1);
+                if ((int)firstDayOfMonth.DayOfWeek != 0)
+                {
+                    CalendarGrid.FirstColumn = (int)firstDayOfMonth.DayOfWeek - 1;
+                }
+                else
+                {
+                    CalendarGrid.FirstColumn = 6;
+                }
+
+                int days = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
+                switch (days)
+                {
+                    case 28:
+                        d29.Visibility = Visibility.Hidden;
+                        d30.Visibility = Visibility.Hidden;
+                        d31.Visibility = Visibility.Hidden;
+                        break;
+
+                    case 29:
+                        d30.Visibility = Visibility.Hidden;
+                        d31.Visibility = Visibility.Hidden;
+                        break;
+
+                    case 30:
+                        d31.Visibility = Visibility.Hidden;
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }
+
             MainCalendar.DisplayMode = CalendarMode.Year;
         }
+
+
     }
 }
