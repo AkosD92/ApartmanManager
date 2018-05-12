@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using ApartmanManagerLib;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace ApartmanManager
 {
@@ -23,13 +24,13 @@ namespace ApartmanManager
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public ObservableCollection<Room> roomsOfHouse = new ObservableCollection<Room>();
 
         public MainWindow()
         {       
             InitializeComponent();          
             lvHouses.ItemsSource = InstanceManager.houseCollection;
-            lvRooms.ItemsSource = InstanceManager.roomCollection;
+            lvRooms.ItemsSource = roomsOfHouse;
 
             MainCalendar_DisplayModeChanged(null, null);
 
@@ -115,15 +116,21 @@ namespace ApartmanManager
                         break;
 
                     case 29:
+                        d29.Visibility = Visibility.Visible;
                         d30.Visibility = Visibility.Hidden;
                         d31.Visibility = Visibility.Hidden;
                         break;
 
                     case 30:
+                        d29.Visibility = Visibility.Visible;
+                        d30.Visibility = Visibility.Visible;
                         d31.Visibility = Visibility.Hidden;
                         break;
 
                     default:
+                        d29.Visibility = Visibility.Visible;
+                        d30.Visibility = Visibility.Visible;
+                        d31.Visibility = Visibility.Visible;
                         break;
                 }
 
@@ -132,6 +139,17 @@ namespace ApartmanManager
             MainCalendar.DisplayMode = CalendarMode.Year;
         }
 
+        private void lvHouses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            roomsOfHouse.Clear();
 
+            foreach (Room r in InstanceManager.roomCollection)
+            {
+                if ((House)lvHouses.SelectedItem == r.ItsHouse)
+                {
+                    roomsOfHouse.Add(r);
+                }
+            }
+        }
     }
 }
