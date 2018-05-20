@@ -38,7 +38,7 @@ namespace ApartmanManagerLib
 
         public static void ExitSave()
         {
-            if ((appState == CustomTypes.enAppState.RUNNING) && (IsLoggedIn == true))
+            if (IsLoggedIn == true)
             {
                 StorageManager.SaveOnExit();
             }

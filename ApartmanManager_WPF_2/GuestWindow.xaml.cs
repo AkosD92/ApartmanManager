@@ -63,7 +63,7 @@ namespace ApartmanManager
         {
             if ((ArrivalField.SelectedDate != null) && (LeaveField.SelectedDate != null) && (CbxReservationHouse.SelectedItem != null))
             {
-                CalendarManager.updateAvailableRooms((DateTime)ArrivalField.SelectedDate, (DateTime)LeaveField.SelectedDate, (House)CbxReservationHouse.SelectedItem);
+                CalendarManager.UpdateAvailableRooms((DateTime)ArrivalField.SelectedDate, (DateTime)LeaveField.SelectedDate, (House)CbxReservationHouse.SelectedItem);
             }
                 
 

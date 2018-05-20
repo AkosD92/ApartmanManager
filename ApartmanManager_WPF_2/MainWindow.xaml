@@ -8,6 +8,9 @@
         Closing="AppClosing"
         Title="ApartmanManager_0" Height="600" Width="1000" Icon="Icons/key.ico"
         MinWidth="400" MinHeight="600" WindowStartupLocation="CenterScreen">
+        <Window.Resources>
+            <local:MainWindow x:Key="mainwidow"/>
+        </Window.Resources>
 
     <Grid>
 
@@ -69,9 +72,6 @@
                 </StackPanel>
             </Button>
 
-
-
-
         </ToolBar>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="1" Background="LightGray" Grid.RowSpan="2">
@@ -87,7 +87,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView Name="lvRooms" Margin="3,5,0,0" HorizontalAlignment="Left" Height="199"  VerticalAlignment="Top" SelectionChanged="lvHouses_SelectionChanged">
+                <ListView Name="lvRooms" Margin="3,5,0,0" HorizontalAlignment="Left" Height="199"  VerticalAlignment="Top" SelectionChanged="lvRooms_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Szobák" Width="170" DisplayMemberBinding="{Binding RoomName}"/>
@@ -124,224 +124,225 @@
             </Border>
         </UniformGrid>
         
-        <UniformGrid  Name="CalendarGrid" Grid.Column="1" Grid.Row="2" Rows="5" Columns="7" Margin="0,0,0,90" >
+        <UniformGrid  Name="CalendarGrid" Grid.Column="1" Grid.Row="2" Rows="5" Columns="7" Margin="0,0,0,90">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="1"/>
-                    <Label Name="lbl1a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl1a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl1b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="2"/>
-                    <Label Name="lbl2a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl2a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl2b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="3"/>
-                    <Label Name="lbl3a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl3a"  Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl3b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="4"/>
-                    <Label Name="lbl4a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl4a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl4b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="5"/>
-                    <Label Name="lbl5a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
-                    <Label Name="lbl5b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
+                    <Label Name="lbl5a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
+                    <Label Name="lbl5b" Height="30" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="6"/>
-                    <Label Name="lbl6a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl6a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl6b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="7"/>
-                    <Label Name="lbl7a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl7a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl7b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="8"/>
-                    <Label Name="lbl8a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl8a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl8b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="9"/>
-                    <Label Name="lbl9a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl9a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl9b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="10"/>
-                    <Label Name="lbl10a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl10a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl10b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="11"/>
-                    <Label Name="lbl11a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl11a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl11b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="12"/>
-                    <Label Name="lbl12a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl12a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl12b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="13"/>
-                    <Label Name="lbl13a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl13a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl13b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="14"/>
-                    <Label Name="lbl14a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl14a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl14b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="15"/>
-                    <Label Name="lbl15a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl15a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl15b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="16"/>
-                    <Label Name="lbl16a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl16a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl16b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="17"/>
-                    <Label Name="lbl17a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl17a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl17b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="18"/>
-                    <Label Name="lbl18a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl18a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl18b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="19"/>
-                    <Label Name="lbl19a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl19a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl19b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="20"/>
-                    <Label Name="lbl20a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl20a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl20b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="21"/>
-                    <Label Name="lbl21a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl21a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl21b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="22"/>
-                    <Label Name="lbl22a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl22a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl22b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="23"/>
-                    <Label Name="lbl23a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl23a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl23b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="24"/>
-                    <Label Name="lbl24a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl24a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl24b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="25"/>
-                    <Label Name="lbl25a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl25a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl25b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="26"/>
-                    <Label Name="lbl26a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl26a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl26b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="27"/>
-                    <Label Name="lbl27a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl27a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl27b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="28"/>
-                    <Label Name="lbl28a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl28a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl28b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border Name="d29" BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="29"/>
-                    <Label Name="lbl29a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl29a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl29b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border Name="d30" BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="30"/>
-                    <Label Name="lbl30a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl30a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl30b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
             <Border Name="d31" BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="31"/>
-                    <Label Name="lbl31a" Height="30" Content="Test Content" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Hidden"/>
+                    <Label Name="lbl31a" Height="30" Content="{Binding Path=Owner}" FontSize="14" FontWeight="Bold" Background="DeepSkyBlue" Visibility="Visible"/>
                     <Label Name="lbl31b" Height="30" Content="Test Content" FontSize="14" FontStyle="Oblique" Background="Orange" Visibility="Hidden"/>
                 </StackPanel>
             </Border>
+
 
 
         </UniformGrid>

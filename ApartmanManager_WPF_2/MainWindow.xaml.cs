@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using ApartmanManagerLib;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 namespace ApartmanManager
 {
@@ -24,7 +25,9 @@ namespace ApartmanManager
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public ObservableCollection<Room> roomsOfHouse = new ObservableCollection<Room>();
+        public ObservableCollection<Visibility> visibilities = new ObservableCollection<Visibility>();
 
         public MainWindow()
         {       
@@ -33,6 +36,40 @@ namespace ApartmanManager
             lvRooms.ItemsSource = roomsOfHouse;
 
             MainCalendar_DisplayModeChanged(null, null);
+
+            CalendarManager.InitDays();
+
+            lbl1a.DataContext = CalendarManager.days[0];
+            lbl2a.DataContext = CalendarManager.days[1];
+            lbl3a.DataContext = CalendarManager.days[2];
+            lbl4a.DataContext = CalendarManager.days[3];
+            lbl5a.DataContext = CalendarManager.days[4];
+            lbl6a.DataContext = CalendarManager.days[5];
+            lbl7a.DataContext = CalendarManager.days[6];
+            lbl8a.DataContext = CalendarManager.days[7];
+            lbl9a.DataContext = CalendarManager.days[8];
+            lbl10a.DataContext = CalendarManager.days[9];
+            lbl11a.DataContext = CalendarManager.days[10];
+            lbl12a.DataContext = CalendarManager.days[11];
+            lbl13a.DataContext = CalendarManager.days[12];
+            lbl14a.DataContext = CalendarManager.days[13];
+            lbl15a.DataContext = CalendarManager.days[14];
+            lbl16a.DataContext = CalendarManager.days[15];
+            lbl17a.DataContext = CalendarManager.days[16];
+            lbl18a.DataContext = CalendarManager.days[17];
+            lbl19a.DataContext = CalendarManager.days[18];
+            lbl20a.DataContext = CalendarManager.days[19];
+            lbl21a.DataContext = CalendarManager.days[20];
+            lbl22a.DataContext = CalendarManager.days[21];
+            lbl23a.DataContext = CalendarManager.days[22];
+            lbl24a.DataContext = CalendarManager.days[23];
+            lbl25a.DataContext = CalendarManager.days[24];
+            lbl26a.DataContext = CalendarManager.days[25];
+            lbl27a.DataContext = CalendarManager.days[26];
+            lbl28a.DataContext = CalendarManager.days[27];
+            lbl29a.DataContext = CalendarManager.days[28];
+            lbl30a.DataContext = CalendarManager.days[29];
+            lbl31a.DataContext = CalendarManager.days[30];
 
 
         }
@@ -51,9 +88,10 @@ namespace ApartmanManager
                 BtnRooms.IsEnabled = true;
                 BtnGuests.IsEnabled = true;
 
-
+                
                 AppStateTxt.Text = "LoggedIn";
                 AppStateTxt.Background = Brushes.Green;
+
             }
 
         }
@@ -94,8 +132,11 @@ namespace ApartmanManager
 
         private void MainCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
+            CalendarManager.CleanOwners();
+
             if (CalendarGrid != null)
             {
+
                 var firstDayOfMonth = new DateTime(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month, 1);
                 if ((int)firstDayOfMonth.DayOfWeek != 0)
                 {
@@ -106,7 +147,7 @@ namespace ApartmanManager
                     CalendarGrid.FirstColumn = 6;
                 }
 
-                int days = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
+                int days = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);              
                 switch (days)
                 {
                     case 28:
@@ -150,6 +191,47 @@ namespace ApartmanManager
                     roomsOfHouse.Add(r);
                 }
             }
+           
+        }
+
+        private void lvRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var firstDayOfMonth = new DateTime(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month, 1);
+            int dayNr = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
+            CalendarManager.UpdateDays(firstDayOfMonth, dayNr, (Room)lvRooms.SelectedItem);
+
+            int daysCnt = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
+            switch (daysCnt)
+            {
+                case 28:
+                    d29.Visibility = Visibility.Hidden;
+                    d30.Visibility = Visibility.Hidden;
+                    d31.Visibility = Visibility.Hidden;
+                    break;
+
+                case 29:
+                    d29.Visibility = Visibility.Visible;
+                    d30.Visibility = Visibility.Hidden;
+                    d31.Visibility = Visibility.Hidden;
+                    break;
+
+                case 30:
+                    d29.Visibility = Visibility.Visible;
+                    d30.Visibility = Visibility.Visible;
+                    d31.Visibility = Visibility.Hidden;
+                    break;
+
+                default:
+                    d29.Visibility = Visibility.Visible;
+                    d30.Visibility = Visibility.Visible;
+                    d31.Visibility = Visibility.Visible;
+                    break;
+            }
+
+
+
+
+
         }
     }
 }

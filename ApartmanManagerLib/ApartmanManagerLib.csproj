@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CalendarManager.cs" />
     <Compile Include="CustomTypes.cs" />
+    <Compile Include="Day.cs" />
     <Compile Include="StorageManager_File.cs" />
     <Compile Include="Guest.cs" />
     <Compile Include="House.cs" />
