@@ -20,9 +20,7 @@ using System.Runtime.CompilerServices;
 
 namespace ApartmanManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml FF0CFF00"
-    /// </summary>
+
     public partial class MainWindow : Window
     {
 

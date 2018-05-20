@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ApartmanManager"
         mc:Ignorable="d"
         Closing="AppClosing"
-        Title="ApartmanManager_0" Height="600" Width="1000" Icon="Icons/key.ico"
+        Title="ApartmanManager Demo_1" Height="600" Width="1000" Icon="Icons/key.ico"
         MinWidth="400" MinHeight="600" WindowStartupLocation="CenterScreen">
         <Window.Resources>
             <local:MainWindow x:Key="mainwidow"/>
