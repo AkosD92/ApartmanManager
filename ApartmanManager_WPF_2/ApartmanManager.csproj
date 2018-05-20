@@ -7,7 +7,7 @@
     <ProjectGuid>{0E04CF98-A888-4488-BD22-797B7F0759AF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ApartmanManager</RootNamespace>
-    <AssemblyName>ApartmanManager_WPF_2</AssemblyName>
+    <AssemblyName>ApartmanManager_Demo_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

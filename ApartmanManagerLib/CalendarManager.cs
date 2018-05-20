@@ -28,6 +28,7 @@ namespace ApartmanManagerLib
                 for (int i = 0; i < 31; i++)
                 {
                     days.ElementAt(i).Owner = "";
+                    days.ElementAt(i).Color = "White";
                 }
 
             }
@@ -57,6 +58,7 @@ namespace ApartmanManagerLib
                     {
                         days.ElementAt(i).ItsGuest = res.ItsGuest;
                         days.ElementAt(i).Owner = res.ItsGuest.FamilyName.ToString() + " " + res.ItsGuest.FirstName.ToString();
+                        days.ElementAt(i).Color = "DeepSkyBlue";
                     }
                     
                 }

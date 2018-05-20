@@ -17,6 +17,7 @@ using ApartmanManagerLib;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls.Primitives;
 
 namespace ApartmanManager
 {
@@ -145,34 +146,14 @@ namespace ApartmanManager
                     CalendarGrid.FirstColumn = 6;
                 }
 
-                int days = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);              
-                switch (days)
-                {
-                    case 28:
-                        d29.Visibility = Visibility.Hidden;
-                        d30.Visibility = Visibility.Hidden;
-                        d31.Visibility = Visibility.Hidden;
-                        break;
+                int days = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
+                SetDependentVisibility(days);
 
-                    case 29:
-                        d29.Visibility = Visibility.Visible;
-                        d30.Visibility = Visibility.Hidden;
-                        d31.Visibility = Visibility.Hidden;
-                        break;
+            }
 
-                    case 30:
-                        d29.Visibility = Visibility.Visible;
-                        d30.Visibility = Visibility.Visible;
-                        d31.Visibility = Visibility.Hidden;
-                        break;
-
-                    default:
-                        d29.Visibility = Visibility.Visible;
-                        d30.Visibility = Visibility.Visible;
-                        d31.Visibility = Visibility.Visible;
-                        break;
-                }
-
+            if (lvRooms!= null && lvRooms.SelectedItem != null)
+            {
+                lvRooms_SelectionChanged(null, null);
             }
 
             MainCalendar.DisplayMode = CalendarMode.Year;
@@ -199,7 +180,21 @@ namespace ApartmanManager
             CalendarManager.UpdateDays(firstDayOfMonth, dayNr, (Room)lvRooms.SelectedItem);
 
             int daysCnt = DateTime.DaysInMonth(MainCalendar.DisplayDate.Year, MainCalendar.DisplayDate.Month);
-            switch (daysCnt)
+            SetDependentVisibility(daysCnt);
+
+        }
+
+        private void MainCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (Mouse.Captured is CalendarItem)
+            {
+                Mouse.Capture(null);
+            }
+        }
+
+        private void SetDependentVisibility(int argDayNr)
+        {
+            switch (argDayNr)
             {
                 case 28:
                     d29.Visibility = Visibility.Hidden;
@@ -225,11 +220,6 @@ namespace ApartmanManager
                     d31.Visibility = Visibility.Visible;
                     break;
             }
-
-
-
-
-
         }
     }
 }

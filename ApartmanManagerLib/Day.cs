@@ -19,19 +19,20 @@ namespace ApartmanManagerLib
         private Guest itsGuest;
         private string owner;
         private string comment;
+        private string color;
 
-        //private bool isTaken;
 
         public Guest ItsGuest { get { return itsGuest; } set { itsGuest = value; pNotify(); } }
         public string Comment { get { return comment; } set { comment = value; pNotify(); } }
         public string Owner { get { return owner.ToString(); } set { owner = value; pNotify(); } }
-        //public bool IsTaken { get { return isTaken; } set{ isTaken = value; } }
+        public string Color { get { return color.ToString(); } set { color = value; pNotify(); } }
 
         public Day()
         {
             itsGuest = null;
             comment = "";
             owner = "";
+            color = "White";
         }
 
         public Day(Guest argItsGuest)
