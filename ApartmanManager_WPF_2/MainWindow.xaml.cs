@@ -82,8 +82,8 @@ namespace ApartmanManager
             if (ProgramFlow.IsLoggedIn == true)
             {
                 BtnHouses.IsEnabled = true;
-                BtnReceipts.IsEnabled = true;
-                BtnSettings.IsEnabled = true;
+                //BtnReceipts.IsEnabled = true;
+                //BtnSettings.IsEnabled = true;
                 BtnRooms.IsEnabled = true;
                 BtnGuests.IsEnabled = true;
 
