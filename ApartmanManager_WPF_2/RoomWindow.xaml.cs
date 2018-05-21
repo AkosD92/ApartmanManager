@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 using ApartmanManagerLib;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace ApartmanManager
 {
@@ -91,11 +92,15 @@ namespace ApartmanManager
             string[] gotRoomData = new string[6];
             bool check = true;
             StringBuilder errString = new StringBuilder();
-          
+
             //get room name
             if (RoomNameField.Text != DefaultRoomName)
             {
                 gotRoomData[(int)CustomTypes.enRoom.name] = RoomNameField.Text;
+            }
+            else
+            {
+                check = false;
             }
             //get number of beds
             gotRoomData[(int)CustomTypes.enRoom.beds] = BedsField.Text;
@@ -131,7 +136,13 @@ namespace ApartmanManager
 
 
         }
-      
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
 
     }
 }

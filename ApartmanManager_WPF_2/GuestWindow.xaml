@@ -79,12 +79,12 @@
                                 <TextBlock Name="dReservationIdField" HorizontalAlignment="Left" Height="20" Margin="129,10,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
                                 <TextBlock Name="dArrivalField" HorizontalAlignment="Left" Height="20" Margin="129,75,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
                                 <TextBlock Name="dLeaveField" HorizontalAlignment="Left" Height="20" Margin="129,95,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
                                 <TextBlock Name="dPaytypeField" HorizontalAlignment="Left" Height="20" Margin="129,165,0,0" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
                                 <TextBox Name="dNoteField" HorizontalAlignment="Left" Height="52" Margin="0,271,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="236" FontSize="11"/>
 
                                 <Button x:Name="BtnModify" IsEnabled="True" Grid.Row="1" Margin="31,0,112,0" Click="BtnModify_Click">
@@ -184,9 +184,9 @@
 
                             </DatePicker>
 
-                            <TextBox Name="PersonsField" Margin="132,60,81,224"/>
-                            <TextBox Name="InfantsField" Margin="132,90,81,194"/>
-                            <TextBox Name="CostField" Margin="132,120,10,154" />
+                            <TextBox Name="PersonsField" Margin="132,60,81,224" PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox Name="InfantsField" Margin="132,90,81,194" PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox Name="CostField" Margin="132,120,10,154"  PreviewTextInput="NumberValidationTextBox"/>
                             <ComboBox Name="CbxPayMethodField" Margin="132,145,10,129" FontSize="14" >
                                 <ComboBoxItem Content="BANKKÁRTYA"/>
                                 <ComboBoxItem Content="KÉSZPÉNZ"/>
@@ -194,8 +194,8 @@
                                 <ComboBoxItem Content="SZÉP - MKB"/>
                                 <ComboBoxItem Content="SZÉP - KnH"/>
                             </ComboBox>
-                            <TextBox Name="PrepaidField" Margin="132,170,10,104" TextChanged="PrepaidField_TextChanged"/>
-                            <TextBox Name="RemainderField" Margin="132,195,10,79"/>
+                            <TextBox Name="PrepaidField" Margin="132,170,10,104" TextChanged="PrepaidField_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox Name="RemainderField" Margin="132,195,10,79" PreviewTextInput="NumberValidationTextBox"/>
                             <TextBox Name="ReservationNoteField" Margin="132,232,10,10" FontSize="12" TextWrapping="Wrap"/>
                         </Grid>
                     </GroupBox>

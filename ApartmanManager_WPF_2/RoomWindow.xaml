@@ -72,7 +72,7 @@
                             <TextBox Name="RoomNameField"  HorizontalAlignment="Left" Height="25" Margin="105,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
 
                             <TextBlock  Text="Ágyak száma:" HorizontalAlignment="Left" Height="25" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
-                            <TextBox Name="BedsField"  HorizontalAlignment="Left" Height="25" Margin="105,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
+                            <TextBox Name="BedsField"  HorizontalAlignment="Left" Height="25" Margin="105,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
 
                             <TextBlock  Text="Megjegyzés:" HorizontalAlignment="Left" Height="25" Margin="10,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
                             <TextBox Name="NoteField" HorizontalAlignment="Left" Height="72" Margin="10,167,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
