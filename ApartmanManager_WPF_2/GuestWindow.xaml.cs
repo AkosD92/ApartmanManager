@@ -115,7 +115,7 @@ namespace ApartmanManager
                 check = false;
                 errString.AppendLine(DefaultMail);
             }
-            //Read in the address
+            //Read in the address field
             if (AddressField.Text != DefaultAddress){ gotGuestData[(int)CustomTypes.enGuest.address] = AddressField.Text;}
             else {
                 check = false;
