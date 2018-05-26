@@ -39,9 +39,13 @@ namespace ApartmanManagerLib
 
         public static void RemoveReservation(Reservation resToRemove)
         {
+            Guest g = resToRemove.ItsGuest;
+            
+
             resToRemove.ItsGuest.ItsReservation = null;
             resToRemove.ItsRoom.ItsReservation = null;
 
+            guestCollection.Remove(g);
             reservationCollection.Remove(resToRemove);
         }
         /*---------------------------[***************************]-------------------------------*/

@@ -87,7 +87,8 @@ namespace ApartmanManager
                 BtnRooms.IsEnabled = true;
                 BtnGuests.IsEnabled = true;
 
-                
+                BtnLogin.IsEnabled = false;
+
                 AppStateTxt.Text = "LoggedIn";
                 AppStateTxt.Background = Brushes.Green;
 

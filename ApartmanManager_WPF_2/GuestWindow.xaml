@@ -55,7 +55,7 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <GroupBox Header="Foglalás adatok" Height="390" Margin="385,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" Width="255">
+                        <GroupBox Header="Foglalás adatok" Height="420" Margin="385,10,0,0" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" Width="255" Grid.RowSpan="2">
                             <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="166*"/>
@@ -74,18 +74,18 @@
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,30,0,0" TextWrapping="Wrap" Text="Ház:" VerticalAlignment="Top" Width="124" FontSize="14"/>
                                 <TextBlock HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" TextWrapping="Wrap" Text="Szoba:" VerticalAlignment="Top" Width="124" FontSize="14"/>
 
-                                <TextBlock Name="dHouseField" HorizontalAlignment="Left" Height="20" Margin="129,30,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dRoomField" HorizontalAlignment="Left" Height="20" Margin="129,50,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dReservationIdField" HorizontalAlignment="Left" Height="20" Margin="129,10,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dArrivalField" HorizontalAlignment="Left" Height="20" Margin="129,75,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBlock Name="dLeaveField" HorizontalAlignment="Left" Height="20" Margin="129,95,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBox Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBlock Name="dPaytypeField" HorizontalAlignment="Left" Height="20" Margin="129,165,0,0" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14"/>
-                                <TextBox Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBox Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBox Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBox Name="dNoteField" HorizontalAlignment="Left" Height="52" Margin="0,271,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="236" FontSize="11"/>
+                                <TextBlock Name="dHouseField" HorizontalAlignment="Left" Height="20" Margin="129,30,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBlock Name="dRoomField" HorizontalAlignment="Left" Height="20" Margin="129,50,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBlock Name="dReservationIdField" HorizontalAlignment="Left" Height="20" Margin="129,10,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBlock Name="dArrivalField" HorizontalAlignment="Left" Height="20" Margin="129,75,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBlock Name="dLeaveField" HorizontalAlignment="Left" Height="20" Margin="129,95,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBlock Name="dPersonsField" HorizontalAlignment="Left" Height="20" Margin="129,120,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="45" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBlock Name="dInfantsField" HorizontalAlignment="Left" Height="20" Margin="129,140,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="45" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBlock Name="dPaytypeField" HorizontalAlignment="Left" Height="20" Margin="129,165,0,0" Text="-" VerticalAlignment="Top" Width="107" FontSize="14"/>
+                                <TextBox Name="dCostField" HorizontalAlignment="Left" Height="20" Margin="129,185,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dPaidField" HorizontalAlignment="Left" Height="20" Margin="129,205,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dRemainderField" HorizontalAlignment="Left" Height="20" Margin="129,225,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="107" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Name="dNoteField" HorizontalAlignment="Left" Height="84" Margin="0,271,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="236" FontSize="11"/>
 
                                 <Button x:Name="BtnModify" IsEnabled="True" Grid.Row="1" Margin="31,0,112,0" Click="BtnModify_Click">
                                     <StackPanel  Orientation="Horizontal">
