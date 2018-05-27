@@ -83,6 +83,9 @@ namespace ApartmanManager
         private void PopulateRoomSetup()
         {
             HouseNameField.Text = ((House)HouseSelector.SelectedItem).HouseName;
+            RoomNameField.Text = ((Room)RoomListView.SelectedItem).RoomName;
+            BedsField.Text = ((Room)RoomListView.SelectedItem).NumberOfBeds.ToString();
+            NoteField.Text = ((Room)RoomListView.SelectedItem).Note;
 
         }
 
@@ -142,6 +145,7 @@ namespace ApartmanManager
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
 
 
     }

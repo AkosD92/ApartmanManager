@@ -7,7 +7,7 @@
         xmlns:src="clr-namespace:ApartmanManagerLib;assembly=ApartmanManagerLib"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="Szobák" MinHeight="420" MinWidth="700" Height="420" Width="700" Icon="Icons/key_5.png">
+        Title="Szobák" MinHeight="420" MinWidth="700" MaxHeight="420" MaxWidth="700" Icon="Icons/key_5.png">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -45,12 +45,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button x:Name="BtnAdd" IsEnabled="True" Width="90" Click="BtnAdd_Click" Margin="140,0,0,0" >
-                            <StackPanel  Orientation="Horizontal">
-                                <Image Source="Icons/plus.png"  />
-                                <TextBlock Margin="3,0,0,0" FontSize="16"><Run Text="Beállít"/></TextBlock>
-                            </StackPanel>
-                        </Button>
+
                     </StackPanel>
 
                     <ListView Name="RoomListView" Margin="10,10,0,5" Grid.Row="1" SelectionChanged="RoomListView_SelectionChanged" MouseDoubleClick="RoomListView_MouseDoubleClick" HorizontalAlignment="Left" Width="435">
@@ -58,12 +53,11 @@
                             <GridView>
                                 <GridViewColumn Header="Szoba név" Width="100" DisplayMemberBinding="{Binding RoomName}"/>
                                 <GridViewColumn Header="Ágyak" Width="50" DisplayMemberBinding="{Binding NumberOfBeds}"/>
-                                <GridViewColumn Header="Foglalás" Width="80" DisplayMemberBinding="{Binding ItsReservation.ItsGuest.FamilyName}"/>
-                                <GridViewColumn Header="Megjegyzés" Width="150" DisplayMemberBinding="{Binding Note}" />
+                                <GridViewColumn Header="Megjegyzés" Width="275" DisplayMemberBinding="{Binding Note}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <GroupBox Header="Adatok" HorizontalAlignment="Left" Height="275" Margin="450,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="230" FontSize="14">
+                    <GroupBox Header="Adatok" HorizontalAlignment="Left" Height="300" Margin="450,10,0,0" VerticalAlignment="Top" Width="230" FontSize="14" Grid.RowSpan="2">
                         <Grid>
                             <TextBlock Name="HouseNameField"  HorizontalAlignment="Left" Height="25" Margin="105,15,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14"/>
                             <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,15,0,0" TextWrapping="Wrap" Text="Ház:" VerticalAlignment="Top" Width="90" FontSize="14"/>
@@ -74,9 +68,15 @@
                             <TextBlock  Text="Ágyak száma:" HorizontalAlignment="Left" Height="25" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
                             <TextBox Name="BedsField"  HorizontalAlignment="Left" Height="25" Margin="105,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontSize="14" PreviewTextInput="NumberValidationTextBox"/>
 
-                            <TextBlock  Text="Megjegyzés:" HorizontalAlignment="Left" Height="25" Margin="10,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
-                            <TextBox Name="NoteField" HorizontalAlignment="Left" Height="72" Margin="10,167,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
+                            <TextBlock  Text="Megjegyzés:" HorizontalAlignment="Left" Height="25" Margin="10,123,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" FontSize="14"/>
+                            <TextBox Name="NoteField" HorizontalAlignment="Left" Height="72" Margin="10,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
 
+                            <Button x:Name="BtnAdd" IsEnabled="True" Width="90" Height="30" Click="BtnAdd_Click" Margin="118,234,10,10">
+                                <StackPanel  Orientation="Horizontal">
+                                    <Image Source="Icons/plus.png"  />
+                                    <TextBlock Margin="3,0,0,0"  FontSize="16"><Run Text="Beállít"/></TextBlock>
+                                </StackPanel>
+                            </Button>
                         </Grid>
                     </GroupBox>
 

@@ -100,7 +100,7 @@
 
         </Grid>
 
-        <UniformGrid Grid.Column="1" Grid.Row="1" Rows="1" Columns="7">
+        <UniformGrid Grid.Column="1" Grid.Row="1" Rows="1" Columns="7" Margin="0,0,5,0">
             <Border BorderBrush="Black" BorderThickness="1" Background="LightGray">
                 <Label Content="HÉTFŐ" HorizontalAlignment="Center" Background="LightGray" FontSize="16" FontStyle="Italic"/>
             </Border>
@@ -124,7 +124,7 @@
             </Border>
         </UniformGrid>
         
-        <UniformGrid  Name="CalendarGrid" Grid.Column="1" Grid.Row="2" Rows="5" Columns="7" Margin="0,0,0,90">
+        <UniformGrid  Name="CalendarGrid" Grid.Column="1" Grid.Row="2" Rows="5" Columns="7" Margin="0,0,5,90">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel>
                     <Label Content="1"/>

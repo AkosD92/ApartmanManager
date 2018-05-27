@@ -214,10 +214,10 @@ namespace ApartmanManager
         {
             Reservation selectedRes = (Reservation)ActiveGuestListView.SelectedItem;
 
-            selectedRes.Arrival = DateTime.Parse(dArrivalField.Text);
-            selectedRes.Leave = DateTime.Parse(dLeaveField.Text);
-            selectedRes.NumberOfPersons = byte.Parse(dPersonsField.Text);
-            selectedRes.NumberOfInfants = byte.Parse(dInfantsField.Text);
+            //selectedRes.Arrival = DateTime.Parse(dArrivalField.Text);
+            //selectedRes.Leave = DateTime.Parse(dLeaveField.Text);
+            //selectedRes.NumberOfPersons = byte.Parse(dPersonsField.Text);
+            //selectedRes.NumberOfInfants = byte.Parse(dInfantsField.Text);
             selectedRes.Cost = int.Parse(dCostField.Text);
             selectedRes.CostPrepaid = int.Parse(dPaidField.Text);
             selectedRes.CostRemainder = int.Parse(dRemainderField.Text);
@@ -245,6 +245,8 @@ namespace ApartmanManager
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+
 
     }
 
